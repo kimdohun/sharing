@@ -1,0 +1,43 @@
+.kip {margin:10px 10px 10px 25px; padding:10px; border:1px dashed skyblue; font:12px/1.6 "malgun gothic";}
+	.kip ul {margin-top:0;}
+.tran {display:inline-block; padding:0 3px; background:blue; color:white; font-weight:bold; border:2px solid #fff; cursor:pointer;}
+.tran:hover {background:#000; color:yellow; border:2px solid yellow;}
+.smallEn {margin-top:0; padding-left:25px; font:12px/1.6 "arial";}
+.bigEn {font:16px/1.6 "arial";}
+.hidden {display:none;}
+.KR {margin-bottom:0; font:16px/1.8 "malgun gothic"; text-decoration:none;}
+.KR strong {font-family:"nanumgothic", "malgun gothic";}
+.collapser {display:block; float:right; margin:-16px 15px 0 0; font-weight:bold; cursor:pointer;}
+.notyet {clear:both;}
+.tillThis {text-align:right; font:12px/1.8 "malgun gothic"; border-bottom:3px groove #666;}
+div.note p[lang=KR]:before {content:'노트: ';}
+div.warning p[lang=KR]:before {content:'\26A0 경고! ';}
+
+#toc {background:#ddd; border:2px solid #ccc; height:300px; font:12px/1.4 "arial"; overflow:auto;}
+	#toc li {list-style:none;}
+	#toc ol, li {margin:0; padding:0;}
+	#toc .H3 {margin-left:-20px;}
+	#toc .H4 {margin-left:0;}
+	#toc .H5 {margin-left:20px;}
+	#toc .H6 {margin-left:40px;}
+	#toc a {text-decoration:none !important; background:transparent !important;}
+	#toc a:link, #toc a:visited {color:inherit;}
+	#toc a:hover {padding-bottom:1px; border-bottom:2px solid olive; color:green;}
+
+#topbar {display:none;position:fixed; top:0; background:#000/*#cbd9ec*/; height:28px; width:90%; z-index:21; padding:3px; margin:0 auto; 
+	border-bottom-left-radius:5px; border-bottom-right-radius:5px;
+	/* transitional css */
+	-moz-border-bottomleft-radius:5px; -moz-border-bottomright-radius:5px;
+	-webkit-border-bottom-left-radius:5px; -webkit-border-bottom-right-radius:5px;}
+
+	#topbar ul, #topbar li {margin:0; padding:0;}
+	#topbar li {display:inline-block; font:bold 16px/24px "malgun gothic"; vertical-align:middle; padding:0 3px; color:#fff; border:2px solid transparent; cursor:pointer;}
+	#topbar li:hover {background:#fff; color:#333; border:2px solid green;}
+	#topbar a {color:inherit; text-decoration:none !important; background:transparent !important;}
+	#topbar #tran li, #topbar #nav li {font:12px/24px "arial"; z-index:11;}
+	#topbar #clearboth li:first-child {border:none; background:transparent;}
+	#topbar #announce {color:#666;}	
+	#topbar #clearboth, #topbar #nav {float:left; margin-left:10px;}
+	#topbar #tran {float:right; width:170px; margin-right:5px;}
+
+#clearboth {width:80px;}

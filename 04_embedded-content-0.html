@@ -1,0 +1,1533 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-US-x-Hixie"><head>
+
+
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>3.2.5.1.6 Embedded content — HTML 5</title>
+	<link rel="stylesheet" type="text/css" href="embedded-content-0_files/w3c.css">
+	<link href="data:text/css," rel="stylesheet" title="Complete specification">
+	<link href="data:text/css,.impl%20%7B%20display:%20none;%20%7D" rel="alternate stylesheet" title="Author documentation only">
+	<link href="data:text/css,.impl%20%7B%20background:%20%23FFEEEE;%20%7D" rel="alternate stylesheet" title="Highlight implementation requirements">
+	<link href="embedded-content-0_files/W3C-WD.css" rel="stylesheet" type="text/css"><!-- ZZZ ED vs WD -->
+	<script src="embedded-content-0_files/link-fixup.js"></script>
+	<link href="http://www.w3.org/TR/html5/dom.html" title="3 Semantics, structure, and APIs of HTML documents" rel="prev">
+	<link href="http://www.w3.org/TR/html5/spec.html#contents" title="Table of contents" rel="index">
+	<link href="http://www.w3.org/TR/html5/semantics.html" title="4 The elements of HTML" rel="next">
+	<link rel="stylesheet" type="text/css" href="embedded-content-0_files/translation.css">
+</head><body onload="fixBrokenLink(); fixBrokenLink();">
+<div class="head">
+<p><a href="http://www.w3.org/"><img alt="W3C" src="embedded-content-0_files/w3c_home.png" height="48" width="72"></a></p>
+<h1>HTML 5</h1>
+<h2 class="no-num no-toc" id="a-vocabulary-and-associated-apis-for-html-and-xhtml">A vocabulary and associated APIs for HTML and XHTML</h2>
+</div><nav class="hidden">
+<a href="http://www.clearboth.org/html5/dom.html">← 3 Semantics, structure, and APIs of HTML documents</a> –
+<a href="http://www.clearboth.org/html5/spec.html#contents">Table of contents</a> –
+<a href="http://www.clearboth.org/html5/semantics.html">4 The elements of HTML →</a>
+</nav><p>This is revision 1.2852.</p><ol id="toc"><li class="H6"><a href="#embedded-content-0"><span class="secno">3.2.5.1.6 </span>Embedded content</a></li><li class="H6"><a href="#interactive-content-0"><span class="secno">3.2.5.1.7 </span>Interactive content</a></li><li class="H5"><a href="#transparent-content-models"><span class="secno">3.2.5.2 </span>Transparent content models</a></li><li class="H5"><a href="#paragraphs"><span class="secno">3.2.5.3 </span>Paragraphs</a></li><li class="H4"><a href="#annotations-for-assistive-technology-products"><span class="secno">3.2.6 </span><dfn>Annotations for assistive technology products</dfn></a></li><li class="H3"><a href="#apis-in-html-documents"><span class="secno">3.3 </span>APIs in HTML documents</a></li><li class="H3"><a href="#interactions-with-xpath-and-xslt"><span class="secno">3.4 </span>Interactions with XPath and XSLT</a></li><li class="H3"><a href="#dynamic-markup-insertion"><span class="secno">3.5 </span><dfn>Dynamic markup insertion</dfn></a></li><li class="H4"><a href="#controlling-the-input-stream"><span class="secno">3.5.1 </span>Controlling the input stream</a></li><li class="H4"><a href="#document.write"><span class="secno">3.5.2 </span><code title="dom-document-write"></code><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-write">document.write()</a></a></li><li class="H4"><a href="#document.writeln"><span class="secno">3.5.3 </span><code title="dom-document-writeln"></code><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-writeln">document.writeln()</a></a></li><li class="H4"><a href="#innerhtml"><span class="secno">3.5.4 </span><code title="dom-innerHTML"></code><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-innerhtml">innerHTML</a></a></li><li class="H4"><a href="#outerhtml"><span class="secno">3.5.5 </span><code title="dom-outerHTML"></code><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-outerhtml">outerHTML</a></a></li><li class="H4"><a href="#insertadjacenthtml"><span class="secno">3.5.6 </span><code title="dom-insertAdjacentHTML"></code><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-insertadjacenthtml">insertAdjacentHTML()</a></a></li></ol>
+
+<h6 id="embedded-content-0"><span class="secno">3.2.5.1.6 </span>Embedded content</h6>
+<p class=" KR" lang="KR">포함된 컨텐츠는 문서 안으로 가져온 다른 자원이거나, 다른 사전에서 문서로 삽입된 내용입니다.</p>
+<p class=" smallEn" lang="EN"><dfn id="embedded-content">Embedded content</dfn> is content that imports another
+resource into the document, or content from another vocabulary that
+is inserted into the document.</p>
+<ul class="brief category-list"><li><code><a href="http://www.clearboth.org/html5/video.html#audio">audio</a></code></li>
+<li><code><a href="http://www.clearboth.org/html5/the-canvas-element.html#the-canvas-element">canvas</a></code></li>
+<li><code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-embed-element">embed</a></code></li>
+<li><code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-iframe-element">iframe</a></code></li>
+<li><code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-img-element">img</a></code></li>
+<li><code><a href="http://www.clearboth.org/html5/the-canvas-element.html#math">math</a></code></li>
+<li><code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-object-element">object</a></code></li>
+<li><code><a href="http://www.clearboth.org/html5/the-canvas-element.html#svg">svg</a></code></li>
+<li><code><a href="http://www.clearboth.org/html5/video.html#video">video</a></code></li>
+</ul>
+<p class=" KR" lang="KR">HTML 네임스페이스 이외의 네임스페이스에서 유래한 요소들, 그리고 메타데이터가 아닌 내용들은 이 명세에서 정의하는 내용 모델의 기준에서 포함된 컨텐츠가 됩니다. (예를 들어, MathML, SVG)</p>
+<p class=" smallEn" lang="EN">Elements that are from namespaces other than the <a href="http://www.clearboth.org/html5/syntax.html#html-namespace-0">HTML
+namespace</a> and that convey content but not metadata, are
+<a href="http://www.clearboth.org/html5/embedded-content-0.html#embedded-content">embedded content</a> for the purposes of the content models
+defined in this specification. (For example, MathML, or SVG.)</p>
+<p class=" KR" lang="KR">일부 포함된 컨텐츠 요소는 에러에 대비한 요소를 가질 수 있습니다. 에러에 대비한
+요소는 외부 자원을 사용할 수 없을 경우(지원되지 않는 포맷이라든가)에 사용될 요소입니다. 에러에 대비한 요소가 있다면, 요소의
+정의에서 그것을 선언합니다.</p>
+<p class=" smallEn" lang="EN">Some embedded content elements can have <dfn id="fallback-content">fallback
+content</dfn>: content that is to be used when the external resource
+cannot be used (e.g. because it is of an unsupported format). The
+element definitions state what the fallback is, if any.</p>
+
+<h6 id="interactive-content-0"><span class="secno">3.2.5.1.7 </span>Interactive content</h6>
+<p class=" KR" lang="KR">상호작용 컨텐츠는 사용자의 상호작용을 위해 특별히 의도된 내용들입니다.</p>
+<p class=" smallEn" lang="EN"><dfn id="interactive-content">Interactive content</dfn> is content that is specifically
+intended for user interaction.</p>
+<ul class="brief category-list"><li><code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-a-element">a</a></code></li>
+<li><code><a href="http://www.clearboth.org/html5/video.html#audio">audio</a></code> (<code title="attr-media-controls"><a href="http://www.clearboth.org/html5/video.html#attr-media-controls">controls</a></code> 속성이 있는 경우)</li>
+<li><code><a href="http://www.clearboth.org/html5/forms.html#the-button-element">button</a></code></li>
+<!-- v2DATAGRID   <li><code>datagrid</code></li> -->
+<li><code><a href="http://www.clearboth.org/html5/interactive-elements.html#the-details-element">details</a></code></li>
+<li><code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-embed-element">embed</a></code></li>
+<li><code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-iframe-element">iframe</a></code></li>
+<li><code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-img-element">img</a></code> (<code title="attr-hyperlink-usemap"><a href="http://www.clearboth.org/html5/the-canvas-element.html#attr-hyperlink-usemap">usemap</a></code> 속성이 있는 경우)</li>
+<li><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> (<code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> 속성이 <a href="http://www.clearboth.org/html5/forms.html#hidden-state" title="attr-input-type-hidden">Hidden</a> 상태가 아닐 경우)</li>
+<li><code><a href="http://www.clearboth.org/html5/forms.html#the-keygen-element">keygen</a></code></li>
+<li><code><a href="http://www.clearboth.org/html5/forms.html#the-label-element">label</a></code></li>
+<li><code><a href="http://www.clearboth.org/html5/interactive-elements.html#menus">menu</a></code> (<code title="attr-menu-type"><a href="http://www.clearboth.org/html5/interactive-elements.html#attr-menu-type">type</a></code> 속성이 <a href="http://www.clearboth.org/html5/interactive-elements.html#tool-bar-state" title="tool bar state">tool bar</a> 상태인 경우)</li>
+<li><code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-object-element">object</a></code> (<code title="attr-hyperlink-usemap"><a href="http://www.clearboth.org/html5/the-canvas-element.html#attr-hyperlink-usemap">usemap</a></code> 속성이 있는 경우)<!-- see also comment in <object> section --></li>
+<li><code><a href="http://www.clearboth.org/html5/forms.html#the-select-element">select</a></code></li>
+<li><code><a href="http://www.clearboth.org/html5/forms.html#the-textarea-element">textarea</a></code></li>
+<li><code><a href="http://www.clearboth.org/html5/video.html#video">video</a></code> (<code title="attr-media-controls"><a href="http://www.clearboth.org/html5/video.html#attr-media-controls">controls</a></code> 속성이 있는 경우)</li>
+</ul>
+<p class=" KR" lang="KR">HTML에서 특정 요소들은 활성화 라는 행동을 가지며, 이것은 사용자가 그것을
+활성화 할 수 있다는 뜻입니다. 이것은 활성화 메카니즘에 따라 몇개의 연속된 이벤트를 발생시키고, 일반적으로 DOMActive
+이벤트에 뒤따르는 클릭 이벤트에서 최고조에 달합니다. 아래에 설명됩니다.</p>
+<p class=" smallEn" lang="EN">Certain elements in HTML have an <a href="http://www.clearboth.org/html5/embedded-content-0.html#activation-behavior">activation
+behavior</a>, which means that the user can activate them. This
+triggers a sequence of events dependent on the activation mechanism,
+and normally culminating in a <code title="event-click">click</code>
+event followed by a <code title="event-DOMActivate">DOMActivate</code> event<span class="impl">, as described below</span>.</p><div class="impl">
+<p class=" KR" lang="KR">사용자 에이전트는 활성화 동작을 갖고 있는 요소들을 사용자가 수동으로 활성화시킬수
+있게 해야 합니다. 이러한 활성화 동작은 키보드 또는 음성 입력, 또는 마우스 클릭을 통해 이뤄질 수 있습니다. 사용자가 이러한
+요소를 정의된 동작 - 마우스 클릭이 아닌 - 에 따라 활성화시킬 때, 이러한 상호작용 이벤트의 기본 행동은 클릭 활성화 단계를
+모방하는 것이 되어야 합니다.</p>
+<p class=" smallEn" lang="EN">The user agent should allow the user to manually trigger elements
+that have an <a href="http://www.clearboth.org/html5/embedded-content-0.html#activation-behavior">activation behavior</a>, for instance using
+keyboard or voice input, or through mouse clicks. When the user
+triggers an element with a defined <a href="http://www.clearboth.org/html5/embedded-content-0.html#activation-behavior">activation behavior</a>
+in a manner other than clicking it, the default action of the
+interaction event must be to <a href="http://www.clearboth.org/html5/embedded-content-0.html#run-synthetic-click-activation-steps">run synthetic click activation
+steps</a> on the element.</p> <!-- interaction event spec point -->
+<p class=" KR" lang="KR">사용자 에이전트가 이러한 모방된 클릭 활성화 단계를 실행할 때에는, 반드시 클릭 전
+활성화 단계를 먼저 수행하고, 그 다음에 클릭 이벤트를 실행해야 합니다. 이러한 클릭 이벤트의 기본 행동은 요소의 클릭 후
+활성화 단계들이어야 합니다. 만약 이벤트가 취소되었다면, 사용자 에이전트는 반드시 활성화 단계 취소를 대신 수행해야 합니다.</p>
+<p class=" smallEn" lang="EN">When a user agent is to <dfn id="run-synthetic-click-activation-steps">run synthetic click activation
+steps</dfn> on an element, the user agent must <a href="http://www.clearboth.org/html5/embedded-content-0.html#run-pre-click-activation-steps">run pre-click
+activation steps</a> on the element, then <a href="http://www.clearboth.org/html5/browsers.html#fire-a-click-event">fire a <code title="event-click">click</code> event</a> at the element. The
+default action of this <span title="event-click">click</span> event
+must be to <a href="http://www.clearboth.org/html5/embedded-content-0.html#run-post-click-activation-steps">run post-click activation steps</a> on the
+element. If the event is canceled, the user agent must <a href="http://www.clearboth.org/html5/embedded-content-0.html#run-canceled-activation-steps">run
+canceled activation steps</a> on the element instead.</p>
+<p class=" KR" lang="KR">요소를 target 이라 했을 때, 활성화할 수 있는 가장 가까운 요소는 다음의 알고리즘이 반환하는 요소입니다:</p>
+<p class=" smallEn" lang="EN">Given an element <var title="">target</var>, the <dfn id="nearest-activatable-element">nearest
+activatable element</dfn> is the element returned by the following
+algorithm:</p>
+
+<ol><li>
+<p class=" KR" lang="KR">target이 정의되어 있는 활성화 동작을 갖고 있다면, target을 반환하고 아래의 단계를 취소합니다.</p>
+<p class=" smallEn" lang="EN">If <var title="">target</var> has a defined <a href="http://www.clearboth.org/html5/embedded-content-0.html#activation-behavior">activation
+behavior</a>, then return <var title="">target</var> and abort
+these steps.</p></li>
+
+<li>
+<p class=" KR" lang="KR">target이 부모 요소를 갖고 있다면, target을 부모 요소에 설정하고 첫 단계로 돌아갑니다.</p>
+<p class=" smallEn" lang="EN">If <var title="">target</var> has a parent element, then set
+<var title="">target</var> to that parent element and return to the
+first step.</p></li>
+
+<li>
+<p class=" KR" lang="KR">그렇지 않다면, 활성화할 수 있는 가장 가까운 요소가 없는 것입니다.</p>
+<p class=" smallEn" lang="EN">Otherwise, there is no <a href="http://www.clearboth.org/html5/embedded-content-0.html#nearest-activatable-element">nearest activatable
+element</a>.</p></li>
+
+</ol>
+<p class=" KR" lang="KR">마우스 등으로 클릭했을때, 사용자 에이전트는 다음의 단계를 실행해야 합니다:</p>
+<p class=" smallEn" lang="EN">When a pointing device is clicked, the user agent must run these
+steps:</p>
+
+<ol><li>
+<p class=" KR" lang="KR">사용자가 가리킨 요소에 활성화할 수 있는 가장 가까운 요소가 있다면, 그것을 e 로 설정합니다.</p>
+<p class=" smallEn" lang="EN">Let <var title="">e</var> be the <span title="">nearest
+activatable element</span> of the element designated by the user,
+if any.</p></li>
+
+<li>
+<p class=" KR" lang="KR">요소 e 를 정의할 수 있다면, 그것에 클릭전 활성화 단계를 실행합니다.</p>
+<p class=" smallEn" lang="EN">If there is an element <var title="">e</var>, <a href="http://www.clearboth.org/html5/embedded-content-0.html#run-pre-click-activation-steps">run
+pre-click activation steps</a> on it.</p></li>
+
+<li>
+<p class=" KR" lang="KR">요청된 클릭 이벤트를 반환합니다.</p>
+<p class=" smallEn" lang="EN">Dispatch the required <code title="event-click">click</code>
+event.</p> <!-- interaction event spec point -->
+<p class=" KR" lang="KR">요소 e가 있다면, 클릭의 기본 동작은 반드시 요소 e에 클릭전 활성화 단계를 실행하는 것입니다.</p>
+<p class=" smallEn" lang="EN">If there is an element <var title="">e</var>, then the default
+action of the <span title="event-click">click</span> event must be
+to <a href="http://www.clearboth.org/html5/embedded-content-0.html#run-post-click-activation-steps">run post-click activation steps</a> on element <var title="">e</var>.</p>
+<p class=" KR" lang="KR">요소 e가 있지만 이벤트가 취소되었다면, 사용자 에이전트는 반드시 취소된 활성화 단계를 e 에 실행해야 합니다.</p>
+<p class=" smallEn" lang="EN">If there is an element <var title="">e</var> but the event is
+canceled, the user agent must <a href="http://www.clearboth.org/html5/embedded-content-0.html#run-canceled-activation-steps">run canceled activation
+steps</a> on element <var title="">e</var>.</p>
+
+</li>
+
+</ol>
+<div class="note">
+<p class=" KR" lang="KR">이상의 단계들은 저자의 스크립트에 의해 만들어진, 모방된 이벤트에 대해서는 발생하지 않습니다. 그러나, click() 메서드를 사용하여 그러한 단계들이 발생하도록 프로그래밍할 수 있습니다.</p>
+<p class=" smallEn" lang="EN">The above doesn't happen for arbitrary synthetic
+events dispatched by author script. However, the <code title="dom-click"><a href="http://www.clearboth.org/html5/editing.html#dom-click">click()</a></code> method can be used to make it
+happen programmatically.</p>
+</div>
+<p class=" KR" lang="KR">사용자 에이전트가 클릭 전 활성화 단계를 실행하려 할 때는, 그 요소에 클릭 전 활성화 단계가 있다면 반드시 그것을 실행해야 합니다.</p>
+<p class=" smallEn" lang="EN">When a user agent is to <dfn id="run-pre-click-activation-steps">run pre-click activation steps</dfn>
+on an element, it must run the <dfn id="pre-click-activation-steps">pre-click activation steps</dfn>
+defined for that element, if any.</p>
+<p class=" KR" lang="KR">사용자 에이전트가 클릭 후 활성화 단계를 실행하려 할 때는, DOMActivate
+라 불리는 간단한 이벤트를 발생시켜야 합니다. 이 이벤트는 요소에서 취소할 수 있습니다. 이 이벤트의 기본 동작은 반드시 요소의
+마지막 활성화 단계여야 합니다. 만약 이벤트가 취소되었다면, 사용자 에이전트는 반드시 취소된 활성화 단계를 실행해야 합니다.</p>
+<p class=" smallEn" lang="EN">When a user agent is to <dfn id="run-post-click-activation-steps">run post-click activation
+steps</dfn> on an element, the user agent must <a href="http://www.clearboth.org/html5/browsers.html#fire-a-simple-event">fire a simple
+event</a> called <code title="event-DOMActivate">DOMActivate</code> that is cancelable at
+that element. The default action of this event must be to <a href="http://www.clearboth.org/html5/embedded-content-0.html#run-final-activation-steps">run
+final activation steps</a> on that element. If the event is
+canceled, the user agent must <a href="http://www.clearboth.org/html5/embedded-content-0.html#run-canceled-activation-steps">run canceled activation
+steps</a> on the element instead.</p>
+<p class=" KR" lang="KR">사용자 에이전트가 취소된 활성화 단계를 실행하려 할 때는, 해당 요소에 정의된 것이 있다면 반드시 그것을 실행하여야 합니다.</p>
+<p class=" smallEn" lang="EN">When a user agent is to <dfn id="run-canceled-activation-steps">run canceled activation steps</dfn>
+on an element, it must run the <dfn id="canceled-activation-steps">canceled activation steps</dfn>
+defined for that element, if any.</p>
+<p class=" KR" lang="KR">사용자 에이전트가 최종 활성화 단계를 실행하려 할 때는, 반드시 그 요소에 대해 정의된 것을 실행해야 합니다. 활성화 동작은 위에서 발생시킨 click 이벤트와 DOMActive 이벤트를 참조할 수 있습니다.</p>
+<p class=" smallEn" lang="EN">When a user agent is to <dfn id="run-final-activation-steps">run final activation steps</dfn> on
+an element, it must run the <dfn id="activation-behavior">activation behavior</dfn> defined
+for that element. Activation behaviors can refer to the <code title="event-click">click</code> and <code title="event-DOMActivate">DOMActivate</code> events that were fired
+by the steps above leading up to this point.</p>
+</div>
+
+<h5 id="transparent-content-models"><span class="secno">3.2.5.2 </span>Transparent content models</h5>
+<p class=" KR" lang="KR">일부 요소들은 투명하다고 설명되어 있습니다; 그것들은 내용 모델의 설명에 "투명" 이라는 단어를 가지고 있습니다. </p>
+<p class=" smallEn" lang="EN">Some elements are described as <dfn id="transparent">transparent</dfn>; they have
+"transparent" in the description of their content model.</p>
+<p class=" KR" lang="KR">내용 모델이 "투명한" 부분을 포함한다면, 모든 투명한 요소들이 부모 요소 안에서 "투명한" 부분의 자식 요소들로 대체된 결과로 명세의 요구사항을 준수하지 못하게 될 내용을 포함해서는 안됩니다.</p>
+<p class=" smallEn" lang="EN">When a content model includes a part that is "transparent", those
+parts must not contain content that would not be conformant if all
+transparent elements in the tree were replaced, in their parent
+element, by the children in the "transparent" part of their content
+model, retaining order.</p>
+<p class=" KR" lang="KR">투명한 요소가 부모 요소를 갖지 않는 경우, 그 내용 모델의 "투명한" 부분은 반드시 그 대신 어떠한 플로우 컨텐츠도 받아들일 수 있는 것으로 취급되어야 합니다.</p>
+<p class=" smallEn" lang="EN">When a transparent element has no parent, then the part of its
+content model that is "transparent" must instead be treated as
+accepting any <a href="http://www.clearboth.org/html5/dom.html#flow-content">flow content</a>.</p><h5 id="paragraphs"><span class="secno">3.2.5.3 </span>Paragraphs</h5>
+<div class="note">
+<p class=" KR" lang="KR">이 섹션에서 정의하는 문단 이라는 단어는 나중에 정의할 p 요소와는 다릅니다. 이곳에서 정의하는 문단의 내용은 문서를 어떻게 해석할지를 설명하기 위해 사용하는 개념입니다.</p>
+<p class=" smallEn" lang="EN">The term <a href="http://www.clearboth.org/html5/embedded-content-0.html#paragraph">paragraph</a> as defined in this
+section is distinct from (though related to) the <code><a href="http://www.clearboth.org/html5/semantics.html#the-p-element">p</a></code>
+element defined later. The <a href="http://www.clearboth.org/html5/embedded-content-0.html#paragraph">paragraph</a> concept defined
+here is used to describe how to interpret documents.</p>
+</div>
+<p class=" KR" lang="KR">문단이란 일반적으로 구문 컨텐츠의 집합이며 텍스트의 블럭을 구성합니다. 이러한
+블럭은 특정한 주제에 대해 다루는 하나 이상의 문장으로 이루어지기도 하고, 좀 더 일반적인 주제에 의해 그룹지어지기도 합니다.
+예를 들어, 폼에 들어가는 하나의 주소 역시 문단이라 할 수 있고, 시의 한 연, 또는 작가명을 적는 란 역시 문단이라 할 수
+있습니다.</p>
+<p class=" smallEn" lang="EN">A <dfn id="paragraph">paragraph</dfn> is typically a run of <a href="http://www.clearboth.org/html5/dom.html#phrasing-content">phrasing
+content</a> that forms a block of text with one or more sentences
+that discuss a particular topic, as in typography, but can also be
+used for more general thematic grouping. For instance, an address is
+also a paragraph, as is a part of a form, a byline, or a stanza in a
+poem.</p><div class="example">
+<p class=" KR" lang="KR">다음의 예제에는 두개의 문단이 하나의 섹션에 속해 있습니다. 헤딩이 포함되어 있는데, 이 헤딩은 문단이 아닌 구문 컨텐츠를 포함합니다. 주석과 요소간 공백이 문단을 구성하지 않는 점을 눈여겨 보기 바랍니다:</p>
+<p class=" smallEn" lang="EN">In the following example, there are two paragraphs in a
+section. There is also a heading, which contains phrasing content
+that is not a paragraph. Note how the comments and
+<a href="http://www.clearboth.org/html5/dom.html#inter-element-whitespace">inter-element whitespace</a> do not form paragraphs.</p>
+
+<pre>&lt;section&gt;
+&lt;h1&gt;Example of paragraphs&lt;/h1&gt;
+This is the &lt;em&gt;first&lt;/em&gt; paragraph in this example.
+&lt;p&gt;This is the second.&lt;/p&gt;
+&lt;!-- This is not a paragraph. --&gt;
+&lt;/section&gt;</pre>
+
+</div>
+<p class=" KR" lang="KR">플로우 컨텐츠에 속한 문단들은 a, ins, del, 그리고 map 요소들이 없는
+상태의 문서와 연관해서 정의되었습니다. 그러한 요소들은 문제를 다소 복잡하게 만드는데, 왜냐하면 다음의 두 예제에서 보여지듯이
+문단의 경계를 모호하게 하기 때문입니다.</p>
+<p class=" smallEn" lang="EN">Paragraphs in <a href="http://www.clearboth.org/html5/dom.html#flow-content">flow content</a> are defined relative to
+what the document looks like without the <code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-a-element">a</a></code>,
+<code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-ins-element">ins</a></code>, <code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-del-element">del</a></code>, and <code><a href="http://www.clearboth.org/html5/the-canvas-element.html#the-map-element">map</a></code> elements
+complicating matters, since those elements, with their hybrid
+content models, can straddle paragraph boundaries, as shown in the
+first two examples below.</p>
+<div class="note">
+<p class=" KR" lang="KR">일반적으로, 요소가 문단 경계를 모호하게 하는 것은 피하는 것이 최선입니다. 그러한 마크업을 다루는 것은 어려운 일이 될 것입니다.</p>
+<p class=" smallEn" lang="EN">Generally, having elements straddle paragraph
+boundaries is best avoided. Maintaining such markup can be
+difficult.</p>
+</div>
+<div class="example">
+<p class=" KR" lang="KR">다음의 예제는 위의 예제에서 사용한 마크업을 가져왔고, 거기에 ins와 del
+요소를 추가하여 텍스트가 변경되었음을 나타내었습니다(그러한 변화가 그다지 일리있지는 않습니다만). ins, 그리고 del
+요소에도 불구하고 이 마크업이 위의 것과 정확하게 같은 문단 구조를 갖고 있음을 눈여겨 보기 바랍니다 - ins 요소는 헤딩과
+첫 문단을 모호하게 하고 있고, del 요소는 두 문단 사이의 경계를 모호하게 하고 있습니다.</p>
+<p class=" smallEn" lang="EN">The following example takes the markup from the earlier example
+and puts <code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-ins-element">ins</a></code> and <code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-del-element">del</a></code> elements around some
+of the markup to show that the text was changed (though in this
+case, the changes admittedly don't make much sense). Notice how
+this example has exactly the same paragraphs as the previous one,
+despite the <code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-ins-element">ins</a></code> and <code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-del-element">del</a></code> elements —
+the <code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-ins-element">ins</a></code> element straddles the heading and the first
+paragraph, and the <code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-del-element">del</a></code> element straddles the boundary
+between the two paragraphs.</p>
+
+<pre>&lt;section&gt;
+&lt;ins&gt;&lt;h1&gt;Example of paragraphs&lt;/h1&gt;
+This is the &lt;em&gt;first&lt;/em&gt; paragraph in&lt;/ins&gt; this example&lt;del&gt;.
+&lt;p&gt;This is the second.&lt;/p&gt;&lt;/del&gt;
+&lt;!-- This is not a paragraph. --&gt;
+&lt;/section&gt;</pre>
+
+</div><div class="impl">
+<p class=" KR" lang="KR">DOM 에서, 문서의 모든 a, ins, del, map 요소와 그 내용을 변경하는
+하나의 시점을 생성하고 그것을 view 라고 합시다. 그리고 그 view 안에서, 구문 컨텐츠 이외의 내용들도 포함할 수 있는
+요소 내에서 다른 타입의 내용에 의해 방해받지 않는, 형제 관계인 구문 컨텐츠 노드들 각각에 대해, first를 그 묶음의
+첫번째 노드로, second를 그 묶음의 마지막 노드라고 가정합니다. 포함된 컨텐츠도 아니고 요소간 공백도 아닌 최소한 하나의
+노드를 포함하는 각각의 묶음에 대해, 원래의 DOM 에 존재하는 문단은 first의 바로 앞과 last의 바로 뒤에 존재하게
+됩니다. (따라서 문단들은 a, ins, del, 그리고 map 요소에 걸쳐서 확장할 수 있습니다)</p>
+<p class=" smallEn" lang="EN">Let <var title="">view</var> be a view of the DOM that replaces
+all <code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-a-element">a</a></code>, <code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-ins-element">ins</a></code>, <code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-del-element">del</a></code>, and
+<code><a href="http://www.clearboth.org/html5/the-canvas-element.html#the-map-element">map</a></code> elements in the document with their contents. Then,
+in <var title="">view</var>, for each run of sibling <a href="http://www.clearboth.org/html5/dom.html#phrasing-content">phrasing
+content</a> nodes uninterrupted by other types of content, in an
+element that accepts content other than <a href="http://www.clearboth.org/html5/dom.html#phrasing-content">phrasing
+content</a>, let <var title="">first</var> be the first node of
+the run, and let <var title="">last</var> be the last node of the
+run. For each such run that consists of at least one node that is
+neither <a href="http://www.clearboth.org/html5/embedded-content-0.html#embedded-content">embedded content</a> nor <a href="http://www.clearboth.org/html5/dom.html#inter-element-whitespace">inter-element
+whitespace</a>, a paragraph exists in the original DOM from
+immediately before <var title="">first</var> to immediately after
+<var title="">last</var>. (Paragraphs can thus span across
+<code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-a-element">a</a></code>, <code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-ins-element">ins</a></code>, <code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-del-element">del</a></code>, and
+<code><a href="http://www.clearboth.org/html5/the-canvas-element.html#the-map-element">map</a></code> elements.)</p>
+<p class=" KR" lang="KR">준수사항 검사기는 곂치는 문단들에 대해 저자에게 경고할 수 있습니다. 이러한 현상은 object, video, audio, canvas 요소에서 발생할 수 있습니다.</p>
+<p class=" smallEn" lang="EN">Conformance checkers may warn authors of cases where they have
+paragraphs that overlap each other (this can happen with
+<code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-object-element">object</a></code>, <code><a href="http://www.clearboth.org/html5/video.html#video">video</a></code>, <code><a href="http://www.clearboth.org/html5/video.html#audio">audio</a></code>, and
+<code><a href="http://www.clearboth.org/html5/the-canvas-element.html#the-canvas-element">canvas</a></code> elements).</p> <!-- example below -->
+
+</div>
+<p class=" KR" lang="KR">문단은 또한 p 요소에 의해 명시적으로 만들어집니다.</p>
+<p class=" smallEn" lang="EN">A <a href="http://www.clearboth.org/html5/embedded-content-0.html#paragraph">paragraph</a> is also formed explicitly by
+<code><a href="http://www.clearboth.org/html5/semantics.html#the-p-element">p</a></code> elements.</p>
+<div class="note">
+<p class=" KR" lang="KR">p 요소는 구문 컨텐츠 이외의 어떤 내용도 될 수 없었을 개별적 문단들을 감싸서 각각의 문단을 분리하는 용도로 사용할 수 있습니다.</p>
+<p class=" smallEn" lang="EN">The <code><a href="http://www.clearboth.org/html5/semantics.html#the-p-element">p</a></code> element can be used to wrap
+individual paragraphs when there would otherwise not be any content
+other than phrasing content to separate the paragraphs from each
+other.</p>
+</div>
+<div class="example">
+<p class=" KR" lang="KR">다음의 예제에서는, 링크가 첫번째 문단의 반, 그리고 두 문단을 구분하는 헤딩, 그리고 두번째 문단의 반에 걸쳐서 확장되어 있습니다. 이것은 문단과 헤딩의 경계를 모호하게 만들고 있습니다.</p>
+<p class=" smallEn" lang="EN">In the following example, the link spans half of the first
+paragraph, all of the heading separating the two paragraphs, and
+half of the second paragraph. It straddles the paragraphs and the
+heading.</p>
+
+<pre>&lt;aside&gt;
+Welcome!
+&lt;a href="about.html"&gt;
+This is home of...
+&lt;h1&gt;The Falcons!&lt;/h1&gt;
+The Lockheed Martin multirole jet fighter aircraft!
+&lt;/a&gt;
+This page discusses the F-16 Fighting Falcon's innermost secrets.
+&lt;/aside&gt;</pre>
+<p class=" KR" lang="KR">이러한 방법을 사용해서 다르게 마크업할 수 있습니다. 이번에는 문단을 명시적으로 드러내고, 하나의 링크를 세개의 요소로 분할하였습니다:</p>
+<p class=" smallEn" lang="EN">Here is another way of marking this up, this time showing the
+paragraphs explicitly, and splitting the one link element into
+three:</p>
+
+<pre>&lt;aside&gt;
+&lt;p&gt;Welcome! &lt;a href="about.html"&gt;This is home of...&lt;/a&gt;&lt;/p&gt;
+&lt;h1&gt;&lt;a href="about.html"&gt;The Falcons!&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;a href="about.html"&gt;The Lockheed Martin multirole jet
+fighter aircraft!&lt;/a&gt; This page discusses the F-16 Fighting
+Falcon's innermost secrets.&lt;/p&gt;
+&lt;/aside&gt;</pre>
+
+</div><div class="example">
+
+<!-- I don't know if there's a better way to deal with this, but if
+there is, let me know... -->
+<p class=" KR" lang="KR">에러 대처 내용을 정의하는 특정 요소들을 사용할 경우, 문단들이 곂칠 수 있습니다. 예를 들어 다음의 섹션에서는:</p>
+<p class=" smallEn" lang="EN">It is possible for paragraphs to overlap when using certain
+elements that define fallback content. For example, in the
+following section:</p>
+
+<pre>&lt;section&gt;
+&lt;h1&gt;My Cats&lt;/h1&gt;
+You can play with my cat simulator.
+&lt;object data="cats.sim"&gt;
+To see the cat simulator, use one of the following links:
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="cats.sim"&gt;Download simulator file&lt;/a&gt;
+&lt;li&gt;&lt;a href="http://sims.example.com/watch?v=LYds5xY4INU"&gt;Use online simulator&lt;/a&gt;
+&lt;/ul&gt;
+Alternatively, upgrade to the Mellblom Browser.
+&lt;/object&gt;
+I'm quite proud of it.
+&lt;/section&gt;</pre>
+<p class=" KR" lang="KR">다섯개의 문단들이 있습니다:</p>
+<p class=" smallEn" lang="EN">There are five paragraphs:</p>
+
+<ol class="brief">
+<li>
+<p class=" KR" lang="KR">"나의 고양이 시뮬레이터를 가지고 놀 수 있습니다. <strong>object</strong> 저는 그것이 아주 자랑스럽습니다" (object는 object 요소입니다)</p>
+<p class=" smallEn" lang="EN">The paragraph that says "You can play with my cat
+simulator. <i title="">object</i> I'm quite proud of it.", where
+<i title="">object</i> is the <code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-object-element">object</a></code> element.</p>
+</li>
+
+<li>
+<p class=" KR" lang="KR">"고양이 시뮬레이터를 보려면, 다음 링크 중 하나를 사용하십시오"</p>
+<p class=" smallEn" lang="EN">The paragraph that says "To see the cat simulator, use one of
+the following links:".</p>
+</li>
+
+<li>
+<p class=" KR" lang="KR">"시뮬레이터 파일을 다운받으십시오"</p>
+<p class=" smallEn" lang="EN">The paragraph that says "Download simulator file".</p>
+</li>
+
+<li>
+<p class=" KR" lang="KR">"온라인 시뮬레이터를 사용하십시오"</p>
+<p class=" smallEn" lang="EN">The paragraph that says "Use online simulator".</p>
+</li>
+
+<li>
+<p class=" KR" lang="KR">"아니면, Mellblom 브라우저로 업그레이드 하십시오"</p>
+<p class=" smallEn" lang="EN">The paragraph that says "Alternatively, upgrade to the Mellblom Browser.".</p>
+</li>
+
+</ol>
+<p class=" KR" lang="KR">첫 문단이 다른 네개의 문단에 의해 곂쳐져 있습니다. 사용자 에이전트가
+cats.sim 을 지원한다면 첫번째 것 만을 보여줄 것입니다. 하지만 사용자 에이전트가 에러 대처 내용을 보여준다면,
+혼란스럽게도, 첫번째 문단의 첫번째 문장이 마치 두번째 것과 같은 문단에 있는것처럼 표현할 것이고, 마지막 문단이 첫 문단의
+두번째 문장의 시작에 있었던 것 처럼 표시할 것입니다.</p>
+<p class=" smallEn" lang="EN">The first paragraph is overlapped by the other four. A user
+agent that supports the "cats.sim" resource will only show the
+first one, but a user agent that shows the fallback will
+confusingly show the first sentence of the first paragraph as
+if it was in the same paragraph as the second one, and will show
+the last paragraph as if it was at the start of the second sentence
+of the first paragraph.</p>
+<p class="kip">이 부분이 혼란스러우시다면 <a href="http://html401.clearboth.org/struct/objects.html#h-13.6.1.1">HTML 4.01 명세에서 정의한 내용</a>을 살펴보실 수 있습니다. 두번째~네번째 문장은 object 요소 안으로 "감춰지는" 요소입니다.</p>
+<p class=" KR" lang="KR">이러한 혼란을 피하기 위해, 명시적인 p 요소를 사용할 수 있습니다.</p>
+<p class=" smallEn" lang="EN">To avoid this confusion, explicit <code><a href="http://www.clearboth.org/html5/semantics.html#the-p-element">p</a></code> elements can be
+used.</p>
+
+</div><h4 id="annotations-for-assistive-technology-products"><span class="secno">3.2.6 </span><dfn>Annotations for assistive technology products</dfn></h4>
+
+<span class="collapser">show</span><div class="notyet hidden">
+	<p class="XXX annotation"><b>Status: </b><i>First draft. </i><span><a href="http://www.w3.org/html/wg/tracker/issues/35">ISSUE-35</a> (aria-processing) and <a href="http://www.w3.org/html/wg/tracker/issues/14">ISSUE-14</a> (aria-role) block progress to Last Call</span></p><p>Authors may use the ARIA <code title="attr-aria-role">role</code>
+	and <code title="attr-aria-*">aria-*</code> attributes on <a href="http://www.clearboth.org/html5/infrastructure.html#html-elements">HTML
+	elements</a>, in accordance with the requirements described in
+	the ARIA specifications, except where these conflict with the
+	<span>strong native semantics</span> described below. These
+	exceptions are intended to prevent authors from making assistive
+	technology products report nonsensical states that do not represent
+	the actual state of the document. <a href="http://www.clearboth.org/html5/references.html#refsARIA">[ARIA]</a></p><div class="impl">
+
+	<p>User agents are required to implement ARIA semantics on all
+	<a href="http://www.clearboth.org/html5/infrastructure.html#html-elements">HTML elements</a>, as defined in the ARIA
+	specifications. The <span>implicit ARIA semantics</span> defined
+	below must be recognised by implementations. <a href="http://www.clearboth.org/html5/references.html#refsARIAIMPL">[ARIAIMPL]</a></p>
+
+	</div><p>The following table defines the <span>strong native
+	semantics</span> <span class="impl">and corresponding <span>implicit
+	ARIA semantics</span></span> that apply to <a href="http://www.clearboth.org/html5/infrastructure.html#html-elements">HTML
+	elements</a>. Each language feature (element or attribute) in a
+	cell in the first column implies the ARIA semantics (role, states,
+	and/or properties) given in the cell in the second column of the
+	same row. Authors must not set the ARIA <code title="attr-aria-role">role</code> and <code title="attr-aria-*">aria-*</code> attributes in a manner that
+	conflicts with the semantics described in the following table. <span class="impl">When multiple rows apply to an element, the role from
+	the last row to define a role must be applied, and the states and
+	properties from all the rows must be combined.</span></p><table><thead><tr><th>Language feature
+	</th><th>Strong native semantics <span class="impl">and implied ARIA semantics</span>
+
+	</th></tr></thead><tbody><tr><td><code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-a-element">a</a></code> element that represents a <a href="http://www.clearboth.org/html5/history.html#hyperlink">hyperlink</a>
+	</td><td><code title="attr-aria-role-link">link</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/semantics.html#the-address-element">address</a></code> element
+	</td><td><code title="attr-aria-role-contentinfo">contentinfo</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/the-canvas-element.html#the-area-element">area</a></code> element that represents a <a href="http://www.clearboth.org/html5/history.html#hyperlink">hyperlink</a>
+	</td><td><code title="attr-aria-role-link">link</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-button-element">button</a></code> element
+	</td><td><code title="attr-aria-role-button">button</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-datalist-element">datalist</a></code> element
+	</td><td><code title="attr-aria-role-listbox">listbox</code> role, with the <code title="attr-aria-multiselectable">aria-multiselectable</code> property set to "false"
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/semantics.html#the-footer-element">footer</a></code> element
+	</td><td><code title="attr-aria-role-contentinfo">contentinfo</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/semantics.html#the-h1-h2-h3-h4-h5-and-h6-elements">h1</a></code> element that does not have an <code><a href="http://www.clearboth.org/html5/semantics.html#the-hgroup-element">hgroup</a></code> ancestor
+	</td><td><code title="attr-aria-role-heading">heading</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/semantics.html#the-h1-h2-h3-h4-h5-and-h6-elements">h2</a></code> element that does not have an <code><a href="http://www.clearboth.org/html5/semantics.html#the-hgroup-element">hgroup</a></code> ancestor
+	</td><td><code title="attr-aria-role-heading">heading</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/semantics.html#the-h1-h2-h3-h4-h5-and-h6-elements">h3</a></code> element that does not have an <code><a href="http://www.clearboth.org/html5/semantics.html#the-hgroup-element">hgroup</a></code> ancestor
+	</td><td><code title="attr-aria-role-heading">heading</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/semantics.html#the-h1-h2-h3-h4-h5-and-h6-elements">h4</a></code> element that does not have an <code><a href="http://www.clearboth.org/html5/semantics.html#the-hgroup-element">hgroup</a></code> ancestor
+	</td><td><code title="attr-aria-role-heading">heading</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/semantics.html#the-h1-h2-h3-h4-h5-and-h6-elements">h5</a></code> element that does not have an <code><a href="http://www.clearboth.org/html5/semantics.html#the-hgroup-element">hgroup</a></code> ancestor
+	</td><td><code title="attr-aria-role-heading">heading</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/semantics.html#the-h1-h2-h3-h4-h5-and-h6-elements">h6</a></code> element that does not have an <code><a href="http://www.clearboth.org/html5/semantics.html#the-hgroup-element">hgroup</a></code> ancestor
+	</td><td><code title="attr-aria-role-heading">heading</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/semantics.html#the-header-element">header</a></code> element
+	</td><td><code title="attr-aria-role-banner">banner</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/semantics.html#the-hgroup-element">hgroup</a></code> element
+	</td><td><code title="attr-aria-role-heading">heading</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/semantics.html#the-hr-element">hr</a></code> element
+	</td><td><code title="attr-aria-role-separator">separator</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-img-element">img</a></code> element whose <code title="attr-img-alt"><a href="http://www.clearboth.org/html5/text-level-semantics.html#attr-img-alt">alt</a></code> attribute's value is empty
+	</td><td><code title="attr-aria-role-presentation">presentation</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#button-state" title="attr-input-type-button">Button</a> state
+	</td><td><code title="attr-aria-role-button">button</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#checkbox-state" title="attr-input-type-checkbox">Checkbox</a> state
+	</td><td><code title="attr-aria-role-checkbox">checkbox</code> role, with the <code title="attr-aria-checked">aria-checked</code> state set to "mixed" if the element's <code title="dom-input-indeterminate"><a href="http://www.clearboth.org/html5/forms.html#dom-input-indeterminate">indeterminate</a></code> DOM attribute is true, or "true" if the element's <a href="http://www.clearboth.org/html5/forms.html#concept-fe-checked" title="concept-fe-checked">checkedness</a> is true, or "false" otherwise
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#color-state" title="attr-input-type-color">Color</a> state
+	</td><td>No role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#date-state" title="attr-input-type-date">Date</a> state
+	</td><td>No role, with the <code title="title-aria-readonly">aria-readonly</code> state set to "true" if the element has a <code title="attr-input-readonly"><a href="http://www.clearboth.org/html5/forms.html#attr-input-readonly">readonly</a></code> attribute
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#date-and-time-state" title="attr-input-type-datetime">Date and Time</a> state
+	</td><td>No role, with the <code title="title-aria-readonly">aria-readonly</code> state set to "true" if the element has a <code title="attr-input-readonly"><a href="http://www.clearboth.org/html5/forms.html#attr-input-readonly">readonly</a></code> attribute
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#local-date-and-time-state" title="attr-input-type-datetime-local">Local Date and Time</a> state
+	</td><td>No role, with the <code title="title-aria-readonly">aria-readonly</code> state set to "true" if the element has a <code title="attr-input-readonly"><a href="http://www.clearboth.org/html5/forms.html#attr-input-readonly">readonly</a></code> attribute
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#e-mail-state" title="attr-input-type-email">E-mail</a> state with no <a href="http://www.clearboth.org/html5/forms.html#concept-input-list" title="concept-input-list">suggestions source element</a>
+	</td><td><code title="attr-aria-role-textbox">textbox</code> role, with the <code title="title-aria-readonly">aria-readonly</code> state set to "true" if the element has a <code title="attr-input-readonly"><a href="http://www.clearboth.org/html5/forms.html#attr-input-readonly">readonly</a></code> attribute
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#file-upload-state" title="attr-input-type-file">File Upload</a> state
+	</td><td><code title="attr-aria-role-button">button</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#hidden-state" title="attr-input-type-hidden">Hidden</a> state
+	</td><td>No role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#image-button-state" title="attr-input-type-image">Image Button</a> state
+	</td><td><code title="attr-aria-role-button">button</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#month-state" title="attr-input-type-month">Month</a> state
+	</td><td>No role, with the <code title="title-aria-readonly">aria-readonly</code> state set to "true" if the element has a <code title="attr-input-readonly"><a href="http://www.clearboth.org/html5/forms.html#attr-input-readonly">readonly</a></code> attribute
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#number-state" title="attr-input-type-number">Number</a> state
+	</td><td><code title="attr-aria-role-spinbutton">spinbutton</code> role, with the <code title="title-aria-readonly">aria-readonly</code> state set to "true" if the element has a <code title="attr-input-readonly"><a href="http://www.clearboth.org/html5/forms.html#attr-input-readonly">readonly</a></code> attribute, the <code title="attr-aria-valuemax">aria-valuemax</code> property set to the element's <a href="http://www.clearboth.org/html5/forms.html#concept-input-max" title="concept-input-max">maximum</a>, the <code title="attr-aria-valuemin">aria-valuemin</code> property set to the element's <a href="http://www.clearboth.org/html5/forms.html#concept-input-min" title="concept-input-min">minimum</a>, and, if the result of applying the <a href="http://www.clearboth.org/html5/infrastructure.html#rules-for-parsing-floating-point-number-values">rules for parsing floating point number values</a> to the element's <a href="http://www.clearboth.org/html5/forms.html#concept-fe-value" title="concept-fe-value">value</a> is a number, with the <code title="attr-aria-valuenow">aria-valuenow</code> property set to that number
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#password-state" title="attr-input-type-password">Password</a> state
+	</td><td><code title="attr-aria-role-textbox">textbox</code> role, with the <code title="title-aria-readonly">aria-readonly</code> state set to "true" if the element has a <code title="attr-input-readonly"><a href="http://www.clearboth.org/html5/forms.html#attr-input-readonly">readonly</a></code> attribute
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#radio-button-state" title="attr-input-type-radio">Radio Button</a> state
+	</td><td><code title="attr-aria-role-radio">radio</code> role, with the <code title="attr-aria-checked">aria-checked</code> state set to "true" if the element's <a href="http://www.clearboth.org/html5/forms.html#concept-fe-checked" title="concept-fe-checked">checkedness</a> is true, or "false" otherwise
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#range-state" title="attr-input-type-range">Range</a> state
+	</td><td><code title="attr-aria-role-slider">slider</code> role, with the <code title="attr-aria-valuemax">aria-valuemax</code> property set to the element's <a href="http://www.clearboth.org/html5/forms.html#concept-input-max" title="concept-input-max">maximum</a>, the <code title="attr-aria-valuemin">aria-valuemin</code> property set to the element's <a href="http://www.clearboth.org/html5/forms.html#concept-input-min" title="concept-input-min">minimum</a>, and the <code title="attr-aria-valuenow">aria-valuenow</code> property set to the result of applying the <a href="http://www.clearboth.org/html5/infrastructure.html#rules-for-parsing-floating-point-number-values">rules for parsing floating point number values</a> to the element's <a href="http://www.clearboth.org/html5/forms.html#concept-fe-value" title="concept-fe-value">value</a>, if that that results in a number, or the <a href="http://www.clearboth.org/html5/forms.html#concept-input-value-default-range" title="concept-input-value-default-range">default value</a> otherwise
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#reset-button-state" title="attr-input-type-reset">Reset Button</a> state
+	</td><td><code title="attr-aria-role-button">button</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#text-state-and-search-state" title="attr-input-type-search">Search</a> state with no <a href="http://www.clearboth.org/html5/forms.html#concept-input-list" title="concept-input-list">suggestions source element</a>
+	</td><td><code title="attr-aria-role-textbox">textbox</code> role, with the <code title="title-aria-readonly">aria-readonly</code> state set to "true" if the element has a <code title="attr-input-readonly"><a href="http://www.clearboth.org/html5/forms.html#attr-input-readonly">readonly</a></code> attribute
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#submit-button-state" title="attr-input-type-submit">Submit Button</a> state
+	</td><td><code title="attr-aria-role-button">button</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#telephone-state" title="attr-input-type-tel">Telephone</a> state with no <a href="http://www.clearboth.org/html5/forms.html#concept-input-list" title="concept-input-list">suggestions source element</a>
+	</td><td><code title="attr-aria-role-textbox">textbox</code> role, with the <code title="title-aria-readonly">aria-readonly</code> state set to "true" if the element has a <code title="attr-input-readonly"><a href="http://www.clearboth.org/html5/forms.html#attr-input-readonly">readonly</a></code> attribute
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#text-state-and-search-state" title="attr-input-type-text">Text</a> state with no <a href="http://www.clearboth.org/html5/forms.html#concept-input-list" title="concept-input-list">suggestions source element</a>
+	</td><td><code title="attr-aria-role-textbox">textbox</code> role, with the <code title="title-aria-readonly">aria-readonly</code> state set to "true" if the element has a <code title="attr-input-readonly"><a href="http://www.clearboth.org/html5/forms.html#attr-input-readonly">readonly</a></code> attribute
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#text-state-and-search-state" title="attr-input-type-text">Text</a>, <a href="http://www.clearboth.org/html5/forms.html#text-state-and-search-state" title="attr-input-type-search">Search</a>, <a href="http://www.clearboth.org/html5/forms.html#telephone-state" title="attr-input-type-tel">Telephone</a>, <a href="http://www.clearboth.org/html5/forms.html#url-state" title="attr-input-type-url">URL</a>, or <a href="http://www.clearboth.org/html5/forms.html#e-mail-state" title="attr-input-type-email">E-mail</a> states with a <a href="http://www.clearboth.org/html5/forms.html#concept-input-list" title="concept-input-list">suggestions source element</a>
+	</td><td><code title="attr-aria-role-combobox">combobox</code> role, with the <code title="attr-aria-owns">aria-owns</code> property set to the same value as the <code title="attr-input-list"><a href="http://www.clearboth.org/html5/forms.html#attr-input-list">list</a></code> attribute, and the <code title="title-aria-readonly">aria-readonly</code> state set to "true" if the element has a <code title="attr-input-readonly"><a href="http://www.clearboth.org/html5/forms.html#attr-input-readonly">readonly</a></code> attribute
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#time-state" title="attr-input-type-time">Time</a> state
+	</td><td>No role, with the <code title="title-aria-readonly">aria-readonly</code> state set to "true" if the element has a <code title="attr-input-readonly"><a href="http://www.clearboth.org/html5/forms.html#attr-input-readonly">readonly</a></code> attribute
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#url-state" title="attr-input-type-url">URL</a> state with no <a href="http://www.clearboth.org/html5/forms.html#concept-input-list" title="concept-input-list">suggestions source element</a>
+	</td><td><code title="attr-aria-role-textbox">textbox</code> role, with the <code title="title-aria-readonly">aria-readonly</code> state set to "true" if the element has a <code title="attr-input-readonly"><a href="http://www.clearboth.org/html5/forms.html#attr-input-readonly">readonly</a></code> attribute
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-input-element">input</a></code> element with a <code title="attr-input-type"><a href="http://www.clearboth.org/html5/forms.html#attr-input-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/forms.html#week-state" title="attr-input-type-week">Week</a> state
+	</td><td>No role, with the <code title="title-aria-readonly">aria-readonly</code> state set to "true" if the element has a <code title="attr-input-readonly"><a href="http://www.clearboth.org/html5/forms.html#attr-input-readonly">readonly</a></code> attribute
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/semantics.html#the-link-element">link</a></code> element that represents a <a href="http://www.clearboth.org/html5/history.html#hyperlink">hyperlink</a>
+	</td><td><code title="attr-aria-role-link">link</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/interactive-elements.html#menus">menu</a></code> element with a <code title="attr-menu-type"><a href="http://www.clearboth.org/html5/interactive-elements.html#attr-menu-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/interactive-elements.html#context-menu-state" title="context menu state">context menu</a> state
+	</td><td>No role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/interactive-elements.html#menus">menu</a></code> element with a <code title="attr-menu-type"><a href="http://www.clearboth.org/html5/interactive-elements.html#attr-menu-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/interactive-elements.html#list-state" title="list state">list</a> state
+	</td><td><code title="attr-aria-role-menu">menu</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/interactive-elements.html#menus">menu</a></code> element with a <code title="attr-menu-type"><a href="http://www.clearboth.org/html5/interactive-elements.html#attr-menu-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/interactive-elements.html#tool-bar-state" title="tool bar state">tool bar</a> state
+	</td><td><code title="attr-aria-role-toolbar">toolbar</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/semantics.html#the-nav-element">nav</a></code> element
+	</td><td><code title="attr-aria-role-navigation">navigation</code> role
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-option-element">option</a></code> element that is in a <a href="http://www.clearboth.org/html5/forms.html#concept-select-option-list" title="concept-select-option-list">list of options</a> or that represents a suggestion in a <code><a href="http://www.clearboth.org/html5/forms.html#the-datalist-element">datalist</a></code> element
+	</td><td><code title="attr-aria-role-option">option</code> role, with the <code title="attr-aria-selected">aria-selected</code> state set to "true" if the element's <a href="http://www.clearboth.org/html5/forms.html#concept-option-selectedness" title="concept-option-selectedness">selectedness</a> is true, or "false" otherwise.
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/text-level-semantics.html#the-progress-element">progress</a></code> element
+	</td><td><code title="attr-aria-role-progressbar">progressbar</code> role, with, if the progress bar is determinate, the <code title="attr-aria-valuemax">aria-valuemax</code> property set to the maximum value of the progress bar, the <code title="attr-aria-valuemin">aria-valuemin</code> property set to zero, and the <code title="attr-aria-valuenow">aria-valuenow</code> property set to the current value of the progress bar
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-select-element">select</a></code> element with a <code title="attr-select-multiple"><a href="http://www.clearboth.org/html5/forms.html#attr-select-multiple">multiple</a></code> attribute
+	</td><td><code title="attr-aria-role-listbox">listbox</code> role, with the <code title="attr-aria-multiselectable">aria-multiselectable</code> property set to "true"
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-select-element">select</a></code> element with no <code title="attr-select-multiple"><a href="http://www.clearboth.org/html5/forms.html#attr-select-multiple">multiple</a></code> attribute
+	</td><td><code title="attr-aria-role-listbox">listbox</code> role, with the <code title="attr-aria-multiselectable">aria-multiselectable</code> property set to "false"
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/tabular-data.html#the-td-element">td</a></code> element
+	</td><td><code title="attr-aria-role-gridcell">gridcell</code> role, with the <code title="attr-aria-labelledby">aria-labelledby</code> property set to the value of the <code title="attr-tdth-headers"><a href="http://www.clearboth.org/html5/tabular-data.html#attr-tdth-headers">headers</a></code> attribute, if any
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-textarea-element">textarea</a></code> element
+	</td><td><code title="attr-aria-role-textbox">textbox</code> role, with the <code title="attr-aria-multiline">aria-multiline</code> property set to "true", and the <code title="title-aria-readonly">aria-readonly</code> state set to "true" if the element has a <code title="attr-textarea-readonly"><a href="http://www.clearboth.org/html5/forms.html#attr-textarea-readonly">readonly</a></code> attribute
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/tabular-data.html#the-th-element">th</a></code> elemen that is neither a <a href="http://www.clearboth.org/html5/tabular-data.html#column-header">column header</a> nor a <a href="http://www.clearboth.org/html5/tabular-data.html#row-header">row header</a>
+	</td><td><code title="attr-aria-role-gridcell">gridcell</code> role, with the <code title="attr-aria-labelledby">aria-labelledby</code> property set to the value of the <code title="attr-tdth-headers"><a href="http://www.clearboth.org/html5/tabular-data.html#attr-tdth-headers">headers</a></code> attribute, if any
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/tabular-data.html#the-th-element">th</a></code> element that is a <a href="http://www.clearboth.org/html5/tabular-data.html#column-header">column header</a>
+	</td><td><code title="attr-aria-role-columnheader">columnheader</code> role, with the <code title="attr-aria-labelledby">aria-labelledby</code> property set to the value of the <code title="attr-tdth-headers"><a href="http://www.clearboth.org/html5/tabular-data.html#attr-tdth-headers">headers</a></code> attribute, if any
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/tabular-data.html#the-th-element">th</a></code> element that is a <a href="http://www.clearboth.org/html5/tabular-data.html#row-header">row header</a>
+	</td><td><code title="attr-aria-role-rowheader">rowheader</code> role, with the <code title="attr-aria-labelledby">aria-labelledby</code> property set to the value of the <code title="attr-tdth-headers"><a href="http://www.clearboth.org/html5/tabular-data.html#attr-tdth-headers">headers</a></code> attribute, if any
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/tabular-data.html#the-tr-element">tr</a></code> element
+	</td><td><code title="attr-aria-role-row">row</code> role
+
+	</td></tr><tr><td>An element that <a href="http://www.clearboth.org/html5/interactive-elements.html#concept-command" title="concept-command">defines a command</a>, whose <a href="http://www.clearboth.org/html5/interactive-elements.html#command-facet-type" title="command-facet-type">Type</a> facet is "checkbox", and that is a descendant of a <code><a href="http://www.clearboth.org/html5/interactive-elements.html#menus">menu</a></code> element whose <code title="attr-menu-type"><a href="http://www.clearboth.org/html5/interactive-elements.html#attr-menu-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/interactive-elements.html#list-state" title="list state">list</a> state
+	</td><td><code title="attr-aria-role-menuitemcheckbox">menuitemcheckbox</code> role, with the <code title="attr-aria-checked">aria-checked</code> state set to "true" if the command's <a href="http://www.clearboth.org/html5/interactive-elements.html#command-facet-checkedstate" title="command-facet-checkedstate">Checked State</a> facet is true, and "false" otherwise
+
+	</td></tr><tr><td>An element that <a href="http://www.clearboth.org/html5/interactive-elements.html#concept-command" title="concept-command">defines a command</a>, whose <a href="http://www.clearboth.org/html5/interactive-elements.html#command-facet-type" title="command-facet-type">Type</a> facet is "command", and that is a descendant of a <code><a href="http://www.clearboth.org/html5/interactive-elements.html#menus">menu</a></code> element whose <code title="attr-menu-type"><a href="http://www.clearboth.org/html5/interactive-elements.html#attr-menu-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/interactive-elements.html#list-state" title="list state">list</a> state
+	</td><td><code title="attr-aria-role-menuitem">menuitem</code> role
+
+	</td></tr><tr><td>An element that <a href="http://www.clearboth.org/html5/interactive-elements.html#concept-command" title="concept-command">defines a command</a>, whose <a href="http://www.clearboth.org/html5/interactive-elements.html#command-facet-type" title="command-facet-type">Type</a> facet is "radio", and that is a descendant of a <code><a href="http://www.clearboth.org/html5/interactive-elements.html#menus">menu</a></code> element whose <code title="attr-menu-type"><a href="http://www.clearboth.org/html5/interactive-elements.html#attr-menu-type">type</a></code> attribute in the <a href="http://www.clearboth.org/html5/interactive-elements.html#list-state" title="list state">list</a> state
+	</td><td><code title="attr-aria-role-menuitemradio">menuitemradio</code> role, with the <code title="attr-aria-checked">aria-checked</code> state set to "true" if the command's <a href="http://www.clearboth.org/html5/interactive-elements.html#command-facet-checkedstate" title="command-facet-checkedstate">Checked State</a> facet is true, and "false" otherwise
+
+	</td></tr><tr><td>Elements that are <a href="http://www.clearboth.org/html5/forms.html#concept-fe-disabled" title="concept-fe-disabled">disabled</a>
+	</td><td>The <code title="title-aria-disabled">aria-disabled</code> state set to "true"
+
+	</td></tr><tr><td>Elements that are <a href="http://www.clearboth.org/html5/forms.html#concept-input-required" title="concept-input-required">required</a>
+	</td><td>The <code title="title-aria-required">aria-required</code> state set to "true"
+
+	</td></tr></tbody></table><p>Some <a href="http://www.clearboth.org/html5/infrastructure.html#html-elements">HTML elements</a> have native semantics that can be
+	overridden. The following table lists these elements<span class="impl"> and their <span>implicit ARIA semantics</span></span>,
+	along with the restrictions that apply to those elements. Each
+	language feature (element or attribute) in a cell in the first
+	column implies, unless otherwise overriden, the ARIA semantic (role,
+	state, or property) given in the cell in the second column of the
+	same row, but this semantic may be overridden under the conditions
+	listed in the cell in the third column of that row.</p><table><thead><tr><th>Language feature
+	</th><th>Default implied ARIA semantic
+	</th><th>Restrictions
+
+	</th></tr></thead><tbody><tr><td><code><a href="http://www.clearboth.org/html5/semantics.html#the-article-element">article</a></code> element
+	</td><td><code title="attr-aria-role-article">article</code> role
+	</td><td>Role must be either <code title="attr-aria-role-article">article</code>, <code title="attr-aria-role-document">document</code>, <code title="attr-aria-role-application">application</code>, or <code title="attr-aria-role-main">main</code>
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/semantics.html#the-aside-element">aside</a></code> element
+	</td><td><code title="attr-aria-role-note">note</code> role
+	</td><td>Role must be either <code title="attr-aria-role-note">note</code>, <code title="attr-aria-role-complementary">complementary</code>, or <code title="attr-aria-role-search">search</code>
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/semantics.html#the-html-element-0">html</a></code> element
+	</td><td><code title="attr-aria-role-document">document</code> role
+	</td><td>Role must be either <code title="attr-aria-role-document">document</code> or <code title="attr-aria-role-application">application</code>
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/semantics.html#the-li-element">li</a></code> element whose parent is an <code><a href="http://www.clearboth.org/html5/semantics.html#the-ol-element">ol</a></code> or <code><a href="http://www.clearboth.org/html5/semantics.html#the-ul-element">ul</a></code> element
+	</td><td><code title="attr-aria-role-listitem">listitem</code> role
+	</td><td>Role must be either <code title="attr-aria-role-listitem">listitem</code> or <code title="attr-aria-role-treeitem">treeitem</code>
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/semantics.html#the-ol-element">ol</a></code> element
+	</td><td><code title="attr-aria-role-list">list</code> role
+	</td><td>Role must be either <code title="attr-aria-role-list">list</code>, <code title="attr-aria-role-tree">tree</code>, or <code title="attr-aria-role-directory">directory</code>
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/forms.html#the-output-element">output</a></code> element
+	</td><td><code title="attr-aria-role-status">status</code> role
+	</td><td>No restrictions
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/semantics.html#the-section-element">section</a></code> element
+	</td><td><code title="attr-aria-role-region">region</code> role
+	</td><td>Role must be either <code title="attr-aria-role-region">region</code>, <code title="attr-aria-role-document">document</code>, <code title="attr-aria-role-application">application</code>, <code title="attr-aria-role-contentinfo">contentinfo</code>, <code title="attr-aria-role-main">main</code>, <code title="attr-aria-role-search">search</code>, <code title="attr-aria-role-alert">alert</code>, <code title="attr-aria-role-dialog">dialog</code>, <code title="attr-aria-role-alertdialog">alertdialog</code>, <code title="attr-aria-role-status">status</code>, or <code title="attr-aria-role-log">log</code>
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/tabular-data.html#the-table-element">table</a></code> element
+	</td><td><code title="attr-aria-role-grid">grid</code> role
+	</td><td>Role must be either <code title="attr-aria-role-grid">grid</code> or <code title="attr-aria-role-treegrid">treegrid</code>
+
+	</td></tr><tr><td><code><a href="http://www.clearboth.org/html5/semantics.html#the-ul-element">ul</a></code> element
+	</td><td><code title="attr-aria-role-list">list</code> role
+	</td><td>Role must be either <code title="attr-aria-role-list">list</code> or <code title="attr-aria-role-tree">tree</code>, or <code title="attr-aria-role-directory">directory</code>
+
+	</td></tr></tbody></table><div class="impl">
+
+	<p>User agents may apply different defaults than those described in
+	this section in order to expose the semantics of <a href="http://www.clearboth.org/html5/infrastructure.html#html-elements">HTML
+	elements</a> in a manner more fine-grained than possible with the
+	above definitions.</p>
+	</div>
+</div>
+
+<h3 id="apis-in-html-documents"><span class="secno">3.3 </span>APIs in HTML documents</h3>
+
+<span class="collapser">show</span><div class="notyet hidden">
+<p class="XXX annotation"><b>Status: </b><i>Awaiting implementation feedback</i></p><p>For <a href="http://www.clearboth.org/html5/dom.html#html-documents">HTML documents</a>, and for <a href="http://www.clearboth.org/html5/infrastructure.html#html-elements">HTML
+elements</a> in <a href="http://www.clearboth.org/html5/dom.html#html-documents">HTML documents</a>, certain APIs defined
+in DOM Core become case-insensitive or case-changing, as sometimes
+defined in DOM Core, and as summarized <span class="impl">or
+required</span> below. <a href="http://www.clearboth.org/html5/references.html#refsDOMCORE">[DOMCORE]</a>.</p><p>This does not apply to <a href="http://www.clearboth.org/html5/dom.html#xml-documents">XML documents</a> or to elements
+that are not in the <a href="http://www.clearboth.org/html5/syntax.html#html-namespace-0">HTML namespace</a> despite being in
+<a href="http://www.clearboth.org/html5/dom.html#html-documents">HTML documents</a>.</p><dl><dt><code title="">Element.tagName</code> and <code title="">Node.nodeName</code></dt>
+
+<dd>
+
+<p>These attributes <span class="impl">must</span> return element
+names <a href="http://www.clearboth.org/html5/infrastructure.html#converted-to-ascii-uppercase">converted to ASCII uppercase</a>, regardless of the case
+with which they were created.</p>
+
+</dd>
+
+
+<dt><code title="">Document.createElement()</code></dt>
+
+<dd>
+
+<p>The canonical form of HTML markup is all-lowercase; thus, this
+method will <a href="http://www.clearboth.org/html5/infrastructure.html#converted-to-ascii-lowercase" title="converted to ASCII lowercase">lowercase</a>
+the argument before creating the requisite element. <span class="impl">Also, the element created must be in the <a href="http://www.clearboth.org/html5/syntax.html#html-namespace-0">HTML
+namespace</a></span>.</p>
+
+<p class="note">This doesn't apply to <code title="">Document.createElementNS()</code>. Thus, it is possible,
+by passing this last method a tag name in the wrong case, to
+create an element that claims to have the tag name of an element
+defined in this specification, but doesn't support its interfaces,
+because it really has another tag name not accessible from the DOM
+APIs.</p>
+
+</dd>
+
+
+<dt><code title="">Element.setAttribute()</code></dt>
+<dt><code title="">Element.setAttributeNode()</code></dt>
+
+<dd>
+
+<p>Attribute names are <a href="http://www.clearboth.org/html5/infrastructure.html#converted-to-ascii-lowercase">converted to ASCII lowercase</a>.</p>
+
+<div class="impl">
+
+<p>Specifically: when an attribute is set on an <a href="http://www.clearboth.org/html5/infrastructure.html#html-elements" title="HTML
+elements">HTML element</a> using <code title="">Element.setAttribute()</code>, the name argument must be
+<a href="http://www.clearboth.org/html5/infrastructure.html#converted-to-ascii-lowercase">converted to ASCII lowercase</a> before the element is
+affected; and when an <code>Attr</code> node is set on an <a href="http://www.clearboth.org/html5/infrastructure.html#html-elements" title="HTML elements">HTML element</a> using <code title="">Element.setAttributeNode()</code>, it must have its name
+<a href="http://www.clearboth.org/html5/infrastructure.html#converted-to-ascii-lowercase">converted to ASCII lowercase</a> before the element is
+affected.</p>
+
+</div>
+
+<p class="note">This doesn't apply to <code title="">Document.setAttributeNS()</code> and <code title="">Document.setAttributeNodeNS()</code>.</p>
+
+</dd>
+
+
+<dt><code title="">Element.getAttribute()</code></dt>
+<dt><code title="">Element.getAttributeNode()</code></dt>
+
+<dd>
+
+<p>Attribute names are <a href="http://www.clearboth.org/html5/infrastructure.html#converted-to-ascii-lowercase">converted to ASCII lowercase</a>.</p>
+
+<div class="impl">
+
+<p>Specifically: When the <code title="">Element.getAttribute()</code> method or the <code title="">Element.getAttributeNode()</code> method is invoked on
+an <a href="http://www.clearboth.org/html5/infrastructure.html#html-elements" title="HTML elements">HTML element</a>, the name
+argument must be <a href="http://www.clearboth.org/html5/infrastructure.html#converted-to-ascii-lowercase">converted to ASCII lowercase</a> before the
+element's attributes are examined.</p>
+
+</div>
+
+<p class="note">This doesn't apply to <code title="">Document.getAttributeNS()</code> and <code title="">Document.getAttributeNodeNS()</code>.</p>
+
+</dd>
+
+
+<dt><code title="">Document.getElementsByTagName()</code></dt>
+<dt><code title="">Element.getElementsByTagName()</code></dt>
+
+<dd>
+
+<p>HTML elements match by lower-casing the argument before
+comparison, elements from other namespaces are treated as in XML
+(case-sensitively).</p>
+
+<div class="impl">
+
+<p>Specifically, these methods (but not their namespaced
+counterparts) must compare the given argument in a
+<a href="http://www.clearboth.org/html5/infrastructure.html#case-sensitive">case-sensitive</a> manner, but when looking at <a href="http://www.clearboth.org/html5/infrastructure.html#html-elements" title="HTML elements">HTML elements</a>, the argument must
+first be <a href="http://www.clearboth.org/html5/infrastructure.html#converted-to-ascii-lowercase">converted to ASCII lowercase</a>.</p>
+
+</div>
+
+<p class="note">Thus, in an <a href="http://www.clearboth.org/html5/dom.html#html-documents" title="HTML documents">HTML
+document</a> with nodes in multiple namespaces, these methods
+will effectively be both case-sensitive and case-insensitive at
+the same time.</p>
+
+</dd>
+
+
+</dl>
+</div>
+
+<h3 id="interactions-with-xpath-and-xslt"><span class="secno">3.4 </span>Interactions with XPath and XSLT</h3>
+
+<span class="collapser">show</span><div class="notyet hidden">
+	<div class="impl">
+	<p class="XXX annotation">
+	<b>Status: </b><i>Controversial Working Draft</i></p>
+
+	<p id="xpath-1.0-processors">Implementations of XPath 1.0 that
+	operate on HTML documents parsed or created in the manners described
+	in this specification (e.g. as part of the <code title="">document.evaluate()</code> API) are affected as
+	follows:</p>
+
+	<p>In addition to the cases where a name expression would match a
+	node per XPath 1.0, a name expression must evaluate to matching a
+	node when all the following conditions are also met:</p>
+
+	<ul class="brief"><li>The name expression has no namespace.</li>
+	<li>The name expression has local name that is a match for <var title="">local</var>.</li>
+	<li>The expression is being tested against an element node.</li>
+	<li>The element has local name <var title="">local</var>.</li>
+	<li>The element is in the <a href="http://www.clearboth.org/html5/syntax.html#html-namespace-0">HTML namespace</a>.</li>
+	<li>The element's document is an <a href="http://www.clearboth.org/html5/dom.html#html-documents" title="HTML documents">HTML document</a>.</li>
+	</ul><p class="note">These requirements are a <a href="http://www.clearboth.org/html5/introduction.html#willful-violation">willful
+	violation</a> of the XPath 1.0 specification, motivated by desire
+	to have implementations be compatible with legacy content while
+	still supporting the changes that this specification introduces to
+	HTML regarding which namespace is used for HTML elements. <a href="http://www.clearboth.org/html5/references.html#refsXPATH10">[XPATH10]</a></p> <!-- note: version matters for
+	this ref -->
+
+	<hr><p id="dom-based-xslt-1.0-processors">XSLT 1.0 processors outputting
+	to a DOM when the output method is "html" (either explicitly or via
+	the defaulting rule in XSLT 1.0) are affected as follows:</p>
+
+	<p>If the transformation program outputs an element in no namespace,
+	the processor must, prior to constructing the corresponding DOM
+	element node, change the namespace of the element to the <a href="http://www.clearboth.org/html5/syntax.html#html-namespace-0">HTML
+	namespace</a>, <a href="http://www.clearboth.org/html5/infrastructure.html#converted-to-ascii-lowercase" title="converted to ASCII
+	lowercase">ASCII-lowercase</a> the element's local name, and
+	<a href="http://www.clearboth.org/html5/infrastructure.html#converted-to-ascii-lowercase" title="converted to ASCII lowercase">ASCII-lowercase</a>
+	the names of any non-namespaced attributes on the element.</p>
+
+	<p class="note">This requirement is a <a href="http://www.clearboth.org/html5/introduction.html#willful-violation">willful violation</a>
+	of the XSLT 1.0 specification, required because this specification
+	changes the namespaces and case-sensitivity rules of HTML in a
+	manner that would otherwise be incompatible with DOM-based XSLT
+	transformations. (Processors that serialize the output are
+	unaffected.) <a href="http://www.clearboth.org/html5/references.html#refsXSLT10">[XSLT10]</a></p> <!-- note:
+	version matters for this ref -->
+
+	</div>
+</div>
+<h3 id="dynamic-markup-insertion"><span class="secno">3.5 </span><dfn>Dynamic markup insertion</dfn></h3>
+
+<span class="collapser">show</span><div class="notyet hidden">
+<p class="note">APIs for dynamically inserting markup into the
+document interact with the parser, and thus their behavior, varies
+depending on whether they are used with <a href="http://www.clearboth.org/html5/dom.html#html-documents">HTML documents</a>
+(and the <a href="http://www.clearboth.org/html5/syntax.html#html-parser">HTML parser</a>) or XHTML in <a href="http://www.clearboth.org/html5/dom.html#xml-documents">XML
+documents</a> (and the <a href="http://www.clearboth.org/html5/the-xhtml-syntax.html#xml-parser">XML parser</a>).</p>
+<div>
+<h4 id="controlling-the-input-stream"><span class="secno">3.5.1 </span>Controlling the input stream</h4>
+<p class="XXX annotation"><b>Status: </b><i>Last call for comments</i></p><p>The <dfn id="dom-document-open" title="dom-document-open"><code>open()</code></dfn>
+method comes in several variants with different numbers of
+arguments.</p><dl class="domintro"><dt><var title="">document</var> = <var title="">document</var> . <code title="dom-document-open"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-open">open</a></code>( [ <var title="">type</var> [, <var title="">replace</var> ] ] )</dt>
+
+<dd>
+
+<p>Causes the <code>Document</code> to be replaced in-place, as if
+it was a new <code>Document</code> object, but reusing the
+previous object, which is then returned.</p>
+
+<p>If the <var title="">type</var> argument is omitted or has the
+value "<code><a href="http://www.clearboth.org/html5/iana-considerations.html#text-html">text/html</a></code>", then the resulting
+<code>Document</code> has an HTML parser associated with it, which
+can be given data to parse using <code title="dom-document-write"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-write">document.write()</a></code>. Otherwise, all
+content passed to <code title="dom-document-write"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-write">document.write()</a></code> will be parsed
+as plain text.</p>
+
+<p>If the <var title="">replace</var> argument is absent or false,
+a new entry is added to the session history to represent this
+entry, and the previous entries for this <code>Document</code> are
+all collapsed into one entry with a new <code>Document</code>
+object.</p>
+
+<p>The method has no effect if the <code>Document</code> is still
+being parsed.</p>
+
+</dd>
+
+<dt><var title="">window</var> = <var title="">document</var> . <code title="dom-document-open"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-open">open</a></code>( <var title="">url</var>, <var title="">name</var>, <var title="">features</var> [, <var title="">replace</var> ] )</dt>
+
+<dd>
+
+<p>Works like the <code title="dom-open"><a href="http://www.clearboth.org/html5/browsers.html#dom-open">window.open()</a></code>
+method.</p>
+
+</dd>
+
+<dt><var title="">document</var> . <code title="dom-document-close"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-close">close</a></code>()</dt>
+
+<dd>
+
+<p>Closes the input stream that was opened by the <code title="dom-document-open"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-open">document.open()</a></code> method.</p>
+
+</dd>
+
+</dl><div class="impl">
+
+<p>When called with two or fewer arguments, the method must act as
+follows:</p>
+
+<ol><li><p>Let <var title="">type</var> be the value of the first
+argument, if there is one, or "<code><a href="http://www.clearboth.org/html5/iana-considerations.html#text-html">text/html</a></code>"
+otherwise.</p></li>
+
+<li><p>Let <var title="">replace</var> be true if there is a second
+argument and it is an <a href="http://www.clearboth.org/html5/infrastructure.html#ascii-case-insensitive">ASCII case-insensitive</a> match for
+the value "replace", and false otherwise.</p></li>
+
+<li>
+
+<p>If the document has an <a href="http://www.clearboth.org/html5/dom.html#active-parser">active parser</a> that isn't a
+<a href="http://www.clearboth.org/html5/embedded-content-0.html#script-created-parser">script-created parser</a>, and the <a href="http://www.clearboth.org/html5/syntax.html#insertion-point">insertion
+point</a> associated with that parser's <a href="http://www.clearboth.org/html5/syntax.html#the-input-stream">input
+stream</a> is not undefined (that is, it <em>does</em> point to
+somewhere in the input stream), then the method does
+nothing. Abort these steps and return the <code>Document</code>
+object on which the method was invoked.</p>
+
+<p class="note">This basically causes <code title="dom-document-open"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-open">document.open()</a></code> to be ignored
+when it's called in an inline script found during the parsing of
+data sent over the network, while still letting it have an effect
+when called asynchronously or on a document that is itself being
+spoon-fed using these APIs.</p>
+
+</li>
+
+<li><p><a href="http://www.clearboth.org/html5/history.html#unload-a-document" title="unload a document">Unload</a> the
+<code>Document</code> object, with the <var title="">recycle</var>
+parameter set to true. If the user <a href="http://www.clearboth.org/html5/history.html#refused-to-allow-the-document-to-be-unloaded">refused to allow the
+document to be unloaded</a>, then these steps must be
+aborted.</p></li>
+
+<li><p>If the document has an <a href="http://www.clearboth.org/html5/dom.html#active-parser">active parser</a>, then
+abort that parser, and throw away any pending content in the
+<a href="http://www.clearboth.org/html5/syntax.html#the-input-stream">input stream</a>.</p></li>
+
+<li><p>Unregister all event listeners registered on the
+<code>Document</code> node and its descendants.</p>
+
+</li><li><p>Remove any <a href="http://www.clearboth.org/html5/browsers.html#concept-task" title="concept-task">tasks</a>
+associated with the <code>Document</code> in any <a href="http://www.clearboth.org/html5/browsers.html#task-source">task
+source</a>.</p></li> <!-- removes callbacks that fired between
+this algorithm starting and the times and databases being aborted
+in the "unload" step above -->
+
+<li><p>Remove all child nodes of the document, without firing any
+mutation events.</p></li> <!-- as of 2009-03-30, only WebKit fired
+mutation events here. -->
+
+<li><p>Replace the <code>Document</code>'s singleton objects with
+new instances of those objects. (This includes in particular the
+<code><a href="http://www.clearboth.org/html5/browsers.html#window">Window</a></code>, <code><a href="http://www.clearboth.org/html5/history.html#location">Location</a></code>, <code><a href="http://www.clearboth.org/html5/history.html#history-0">History</a></code>,
+<code><a href="http://www.clearboth.org/html5/offline.html#applicationcache">ApplicationCache</a></code>, <code><a href="http://www.clearboth.org/html5/editing.html#undomanager">UndoManager</a></code>,
+<code><a href="http://www.clearboth.org/html5/browsers.html#navigator">Navigator</a></code>, and <code><a href="http://www.clearboth.org/html5/editing.html#selection-0">Selection</a></code> objects, the
+various <code><a href="http://www.clearboth.org/html5/browsers.html#barprop">BarProp</a></code> objects, the two <code>Storage</code>
+objects, and the various <code><a href="http://www.clearboth.org/html5/infrastructure.html#htmlcollection">HTMLCollection</a></code> objects. It
+also includes all the Web IDL prototypes in the JavaScript binding,
+including the <code>Document</code> object's prototype.)</p></li>
+
+<!-- http://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E...%3Ciframe%20src%3D%22document%22%3E%3C%2Fiframe%3E%0A%3Cscript%3Eonload%20%3D%20function%20()%20%7B%20f%20%3D%20document.getElementsByTagName('iframe')%5B0%5D%3B%20d%20%3D%20f.contentWindow.document%3B%20%7D%3C%2Fscript%3E%0A%3Cinput%20type%3Dbutton%20onclick%3D%22w(d.documentElement.innerHTML)%22%20value%3D%22dump%22%3E%0A%3Cinput%20type%3Dbutton%20onclick%3D%22d.open()%3B%20d.write('%3Cscript%3Evar%20x%20%3D%20new%20XMLHttpRequest()%3Bx.open(%26quot%3BGET%26quot%3B%2C%20%26quot%3BGET%26quot%3B)%3Bx.onreadystatechange%3Dfunction()%20%7B%20alert(x.readyState)%3B%20%7D%3Bx.send(null)%3B%3C%2Fscript%3E')%3Bd.close()%3B%20setTimeout(function()%20%7B%20d.open()%3B%20d.write('%3Cp%3Etest%3C%2Fp%3E')%3B%20d.close()%20%7D%2C%200)%3B%22%20value%3D%22xhr%22%3E%0A%3Cinput%20type%3Dbutton%20onclick%3D%22d.onclick%20%3D%20function()%20%7B%20w('click')%20%7D%22%20value%3D%22add%20click%20handler%22%3E%0A%3Cinput%20type%3Dbutton%20onclick%3D%22d.open()%3B%20d.write('%3Cp%3Etest%3C%2Fp%3E')%3B%20d.close()%22%20value%3D%22replace%22%3E%0A%3Cinput%20type%3Dbutton%20onclick%3D%22d.open()%3B%20d.write('%3Cp%3E%3Cscript%3Ei%20%3D%200%3B%20setTimeout(%26quot%3Bparent.w(i%2B%2B)%26quot%3B%2C%202000)%3C%2Fscript%3E%3C%2Fp%3E')%3B%20d.close()%22%20value%3D%22replace%20with%20timer%22%3E -->
+<!-- http://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E%0D%0A...%3Ciframe%3E%3C%2Fiframe%3E%0D%0A%3Cscript%3E%0D%0Aonload%20%3D%20function%20()%20%7B%0D%0A%20frames%5B0%5D.test%20%3D%201%0D%0A%20w(frames%5B0%5D.test)%3B%0D%0A%20var%20a%20%3D%20frames%5B0%5D.document.location.assign%3B%0D%0A%20w(a)%3B%0D%0A%20w(frames%5B0%5D.document.location.assign%20%3D%3D%3D%20a)%3B%0D%0A%20frames%5B0%5D.document.open()%3B%0D%0A%20frames%5B0%5D.document.write('%3Cscript%3Edocument.write(test)%3C%5C%2Fscript%3E')%3B%0D%0A%20frames%5B0%5D.document.close()%3B%0D%0A%20w(frames%5B0%5D.test)%3B%0D%0A%20w(frames%5B0%5D.document.location.assign%20%3D%3D%3D%20a)%3B%0D%0A%7D%0D%0A%3C%2Fscript%3E -->
+
+<li><p>Change the <a href="http://www.clearboth.org/html5/dom.html#document-s-character-encoding">document's character encoding</a> to
+UTF-16.</p></li>
+
+<li><p>Change <a href="http://www.clearboth.org/html5/dom.html#the-document-s-address">the document's address</a> to the
+<a href="http://www.clearboth.org/html5/browsers.html#first-script">first script</a>'s <a href="http://www.clearboth.org/html5/browsers.html#script-s-browsing-context" title="script's browsing
+context">browsing context</a>'s <a href="http://www.clearboth.org/html5/browsers.html#active-document">active document</a>'s
+<a href="http://www.clearboth.org/html5/dom.html#the-document-s-address" title="the document's address">address</a>.</p></li>
+
+<li><p>Create a new <a href="http://www.clearboth.org/html5/syntax.html#html-parser">HTML parser</a> and associate it with
+the document. This is a <dfn id="script-created-parser">script-created parser</dfn> (meaning
+that it can be closed by the <code title="dom-document-open"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-open">document.open()</a></code> and <code title="dom-document-close"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-close">document.close()</a></code> methods, and
+that the tokenizer will wait for an explicit call to <code title="dom-document-close"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-close">document.close()</a></code> before emitting
+an end-of-file token). The encoding <a href="http://www.clearboth.org/html5/syntax.html#concept-encoding-confidence" title="concept-encoding-confidence">confidence</a> is
+<i>irrelevant</i>.</p></li>
+
+<li>Mark the document as being an <a href="http://www.clearboth.org/html5/dom.html#html-documents" title="HTML documents">HTML
+document</a> (it might already be so-marked).</li>
+
+<li>
+
+<!-- text/plain handling -->
+
+<p>If the <var title="">type</var> string contains a U+003B
+SEMICOLON (;) character, remove the first such character and all
+characters from it up to the end of the string.</p>
+
+<p>Strip all leading and trailing <a href="http://www.clearboth.org/html5/infrastructure.html#space-character" title="space
+character">space characters</a> from <var title="">type</var>.</p>
+
+<p>If <var title="">type</var> is <em>not</em> now an <a href="http://www.clearboth.org/html5/infrastructure.html#ascii-case-insensitive">ASCII
+case-insensitive</a> match for the string
+"<code><a href="http://www.clearboth.org/html5/iana-considerations.html#text-html">text/html</a></code>", then act as if the tokenizer had emitted
+a start tag token with the tag name "pre", then set the <a href="http://www.clearboth.org/html5/syntax.html#html-parser">HTML
+parser</a>'s <a href="http://www.clearboth.org/html5/syntax.html#tokenization">tokenization</a> stage's <a href="http://www.clearboth.org/html5/syntax.html#content-model-flag">content
+model flag</a> to <i title="">PLAINTEXT</i>.</p>
+
+<!--
+http://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E...%3Ciframe%3E%3C%2Fiframe%3E%3Cscript%3Eonload%20%3D%20function%20()%20%7B%20%0D%0A%20%20var%20d%20%3D%20document.getElementsByTagName('iframe')%5B0%5D.contentDocument%3B%0D%0A%20%20d.open('image%2Fsvg%2Bxml')%3B%0D%0A%20%20d.write(%22%3Cinput%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml'%20value%3D'(x)html'%2F%3E%22)%3B%0D%0A%20%20d.close()%3B%0D%0A%7D%3B%3C%2Fscript%3E
+http://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E...%3Ciframe%3E%3C%2Fiframe%3E%3Cscript%3Eonload%20%3D%20function%20()%20%7B%20%0D%0A%20%20var%20d%20%3D%20document.getElementsByTagName('iframe')%5B0%5D.contentDocument%3B%0D%0A%20%20d.open('image%2Fgif')%3B%0D%0A%20%20var%20a%20%3D%20%5B%200x47%2C%200x49%2C%200x46%2C%200x38%2C%200x39%2C%200x61%2C%200x01%2C%200x00%2C%200x01%2C%200x00%2C%0D%0A%20%20%20%20%20%20%20%20%20%20%20%200x80%2C%200xff%2C%200x00%2C%200xc0%2C%200xc0%2C%200xc0%2C%200x00%2C%200x00%2C%200x00%2C%200x21%2C%0D%0A%20%20%20%20%20%20%20%20%20%20%20%200xf9%2C%200x04%2C%200x01%2C%200x00%2C%200x00%2C%200x00%2C%200x00%2C%200x2c%2C%200x00%2C%200x00%2C%0D%0A%20%20%20%20%20%20%20%20%20%20%20%200x00%2C%200x00%2C%200x01%2C%200x00%2C%200x01%2C%200x00%2C%200x00%2C%200x02%2C%200x02%2C%200x44%2C%0D%0A%20%20%20%20%20%20%20%20%20%20%20%200x01%2C%200x00%2C%200x3b%20%5D%3B%0D%0A%20%20var%20s%20%3D%20%22%22%3B%0D%0A%20%20for%20(var%20i%20%3D%200%3B%20i%20%3C%20a.length%3B%20i%20%2B%3D%201)%0D%0A%20%20%20%20s%20%2B%3D%20String.fromCharCode(a%5Bi%5D)%3B%0D%0A%20%20d.write(s)%3B%0D%0A%20%20d.close()%3B%0D%0A%7D%3B%3C%2Fscript%3E
+http://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E...%3Ciframe%3E%3C%2Fiframe%3E%3Cscript%3Eonload%20%3D%20function%20()%20{%20%0A%20%20var%20d%20%3D%20document.getElementsByTagName(%27iframe%27)[0].contentDocument%3B%0A%20%20d.open(%27Text%2Fplain%27)%3B%0A%20%20d.write(%27%3Cb%3Etest%27)%3B%0A%20%20d.close()%3B%0A}%3B%3C%2Fscript%3E
+http://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E...%3Ciframe%3E%3C%2Fiframe%3E%3Cscript%3Eonload%20%3D%20function%20()%20{%20%0A%20%20var%20d%20%3D%20document.getElementsByTagName(%27iframe%27)[0].contentDocument%3B%0A%20%20d.open(%27%20text%2Fplain%27)%3B%0A%20%20d.write(%27%3Cb%3Etest%27)%3B%0A%20%20d.close()%3B%0A}%3B%3C%2Fscript%3E
+http://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E...%3Ciframe%3E%3C%2Fiframe%3E%3Cscript%3Eonload%20%3D%20function%20()%20{%20%0A%20%20var%20d%20%3D%20document.getElementsByTagName(%27iframe%27)[0].contentDocument%3B%0A%20%20d.open(%27text%2Fplain%3B%27)%3B%0A%20%20d.write(%27%3Cb%3Etest%27)%3B%0A%20%20d.close()%3B%0A}%3B%3C%2Fscript%3E
+-->
+
+</li>
+
+<li>
+
+<p>If <var title="">replace</var> is false, then:
+
+</p><ol><li>Remove all the entries in the <a href="http://www.clearboth.org/html5/browsers.html#browsing-context">browsing context</a>'s
+<a href="http://www.clearboth.org/html5/history.html#session-history">session history</a> after the <a href="http://www.clearboth.org/html5/history.html#current-entry">current entry</a>
+in its <code>Document</code>'s <code><a href="http://www.clearboth.org/html5/history.html#history-0">History</a></code> object</li>
+
+<li>Remove any earlier entries that share the same
+<code>Document</code></li>
+
+<li>Add a new entry just before the last entry that is associated
+with the text that was parsed by the previous parser associated
+with the <code>Document</code> object, as well as the state of
+the document at the start of these steps. (This allows the user
+to step backwards in the session history to see the page before
+it was blown away by the <code title="dom-document-open"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-open">document.open()</a></code> call.)</li>
+
+</ol></li>
+
+<li><p>Finally, set the <a href="http://www.clearboth.org/html5/syntax.html#insertion-point">insertion point</a> to point at
+just before the end of the <a href="http://www.clearboth.org/html5/syntax.html#the-input-stream">input stream</a> (which at this
+point will be empty).</p></li>
+
+<li><p>Return the <code>Document</code> on which the method was
+invoked.</p></li>
+
+</ol><p>When called with three or more arguments, the <code title="dom-document-open"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-open">open()</a></code> method on the
+<code><a href="http://www.clearboth.org/html5/dom.html#htmldocument">HTMLDocument</a></code> object must call the <code title="dom-open"><a href="http://www.clearboth.org/html5/browsers.html#dom-open">open()</a></code> method on the <code><a href="http://www.clearboth.org/html5/browsers.html#window">Window</a></code>
+object of the <code><a href="http://www.clearboth.org/html5/dom.html#htmldocument">HTMLDocument</a></code> object, with the same
+arguments as the original call to the <code title="dom-document-open"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-open">open()</a></code> method, and return whatever
+that method returned. If the <code><a href="http://www.clearboth.org/html5/dom.html#htmldocument">HTMLDocument</a></code> object has no
+<code><a href="http://www.clearboth.org/html5/browsers.html#window">Window</a></code> object, then the method must raise an
+<code><a href="http://www.clearboth.org/html5/infrastructure.html#invalid_access_err">INVALID_ACCESS_ERR</a></code> exception.</p>
+
+<p>The <dfn id="dom-document-close" title="dom-document-close"><code>close()</code></dfn>
+method must do nothing if there is no <a href="http://www.clearboth.org/html5/embedded-content-0.html#script-created-parser">script-created
+parser</a> associated with the document. If there is such a
+parser, then, when the method is called, the user agent must insert
+an <a href="http://www.clearboth.org/html5/syntax.html#explicit-eof-character">explicit "EOF" character</a> at the end of the parser's
+<a href="http://www.clearboth.org/html5/syntax.html#the-input-stream">input stream</a>.</p>
+
+</div><h4 id="document.write"><span class="secno">3.5.2 </span><code title="dom-document-write"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-write">document.write()</a></code></h4><dl class="domintro"><dt><var title="">document</var> . <code title="dom-document-write"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-write">write</a></code>(<var title="">text</var>...)</dt>
+
+<dd>
+
+<p>Adds the given string(s) to the <code>Document</code>'s input
+stream. If necessary, calls the <code title="dom-document-open"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-open">open()</a></code> method implicitly
+first.</p>
+
+<p>This method throws an <code><a href="http://www.clearboth.org/html5/infrastructure.html#invalid_access_err">INVALID_ACCESS_ERR</a></code> exception
+when invoked on <a href="http://www.clearboth.org/html5/dom.html#xml-documents">XML documents</a>.</p>
+
+</dd>
+
+</dl><div class="impl">
+
+<p>The <dfn id="dom-document-write" title="dom-document-write"><code>document.write(...)</code></dfn>
+method must act as follows:</p>
+
+<ol><li>
+
+<p>If the method was invoked on an <a href="http://www.clearboth.org/html5/dom.html#xml-documents" title="XML documents">XML
+document</a>, throw an <code><a href="http://www.clearboth.org/html5/infrastructure.html#invalid_access_err">INVALID_ACCESS_ERR</a></code>
+exception and abort these steps.</p>
+
+<!--
+Where would document.write() insert?
+Consider: data:text/xml,<script xmlns="http://www.w3.org/1999/xhtml"><![CDATA[ document.write('<foo>Test</foo>'); ]]></script>
+-->
+
+</li>
+
+<li>
+
+<p>If the <a href="http://www.clearboth.org/html5/syntax.html#insertion-point">insertion point</a> is undefined, the <code title="dom-document-open"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-open">open()</a></code> method must be called
+(with no arguments) on the <code title="Document">document</code>
+object. If the user <a href="http://www.clearboth.org/html5/history.html#refused-to-allow-the-document-to-be-unloaded">refused to allow the document to be
+unloaded</a>, then these steps must be aborted. Otherwise, the
+<a href="http://www.clearboth.org/html5/syntax.html#insertion-point">insertion point</a> will point at just before the end of
+the (empty) <a href="http://www.clearboth.org/html5/syntax.html#the-input-stream">input stream</a>.</p>
+
+</li>
+
+<li>
+
+<p>The string consisting of the concatenation of all the arguments
+to the method must be inserted into the <a href="http://www.clearboth.org/html5/syntax.html#the-input-stream">input stream</a>
+just before the <a href="http://www.clearboth.org/html5/syntax.html#insertion-point">insertion point</a>.</p>
+
+</li>
+
+<li>
+
+<p>If there is a <a href="http://www.clearboth.org/html5/semantics.html#pending-external-script">pending external script</a>, then the
+method must now return without further processing of the
+<a href="http://www.clearboth.org/html5/syntax.html#the-input-stream">input stream</a>.</p>
+
+</li>
+
+<li>
+
+<p>Otherwise, the tokenizer must process the characters that were
+inserted, one at a time, processing resulting tokens as they are
+emitted, and stopping when the tokenizer reaches the insertion
+point or when the processing of the tokenizer is aborted by the
+tree construction stage (this can happen if a <code><a href="http://www.clearboth.org/html5/semantics.html#script">script</a></code>
+end tag token is emitted by the tokenizer).
+
+</p><p class="note">If the <code title="dom-document-write"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-write">document.write()</a></code> method was
+called from script executing inline (i.e. executing because the
+parser parsed a set of <code><a href="http://www.clearboth.org/html5/semantics.html#script">script</a></code> tags), then this is a
+<a href="http://www.clearboth.org/html5/syntax.html#nestedParsing">reentrant invocation of the
+parser</a>.</p>
+
+</li>
+
+<li>
+
+<p>Finally, the method must return.</p>
+
+</li>
+
+</ol></div><h4 id="document.writeln"><span class="secno">3.5.3 </span><code title="dom-document-writeln"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-writeln">document.writeln()</a></code></h4><dl class="domintro"><dt><var title="">document</var> . <code title="dom-document-writeln"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-writeln">writeln</a></code>(<var title="">text</var>...)</dt>
+
+<dd>
+
+<p>Adds the given string(s) to the <code>Document</code>'s input
+stream, followed by a newline character. If necessary, calls the
+<code title="dom-document-open"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-open">open()</a></code> method implicitly
+first.</p>
+
+<p>This method throws an <code><a href="http://www.clearboth.org/html5/infrastructure.html#invalid_access_err">INVALID_ACCESS_ERR</a></code> exception
+when invoked on <a href="http://www.clearboth.org/html5/dom.html#xml-documents">XML documents</a>.</p>
+
+</dd>
+
+</dl><div class="impl">
+
+<p>The <dfn id="dom-document-writeln" title="dom-document-writeln"><code>document.writeln(...)</code></dfn>
+method, when invoked, must act as if the <code title="dom-document-write"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-document-write">document.write()</a></code> method had been
+invoked with the same argument(s), plus an extra argument consisting
+of a string containing a single line feed character (U+000A).</p>
+
+</div><h4 id="innerhtml"><span class="secno">3.5.4 </span><code title="dom-innerHTML"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-innerhtml">innerHTML</a></code></h4><p class="XXX annotation"><b>Status: </b><i>Implemented and widely deployed</i></p><p>The <dfn id="dom-innerhtml" title="dom-innerHTML"><code>innerHTML</code></dfn> DOM
+attribute represents the markup of the node's contents.</p><dl class="domintro"><dt><var title="">document</var> . <code title="dom-innerHTML"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-innerhtml">innerHTML</a></code> [ = <var title="">value</var> ]</dt>
+
+<dd>
+
+<p>Returns a fragment of HTML or XML that represents the
+<code>Document</code>.</p>
+
+<p>Can be set, to replace the <code>Document</code>'s contents
+with the result of parsing the given string.</p>
+
+<p>In the case of <a href="http://www.clearboth.org/html5/dom.html#xml-documents">XML documents</a>, will throw a
+<code><a href="http://www.clearboth.org/html5/infrastructure.html#syntax_err">SYNTAX_ERR</a></code> if the <code>Document</code> cannot be
+serialized to XML, or if the given string is not well-formed.</p>
+
+</dd>
+
+<dt><var title="">element</var> . <code title="dom-innerHTML"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-innerhtml">innerHTML</a></code> [ = <var title="">value</var> ]</dt>
+
+<dd>
+
+<p>Returns a fragment of HTML or XML that represents the element's
+contents.</p>
+
+<p>Can be set, to replace the contents of the element with nodes
+parsed from the given string.</p>
+
+<p>In the case of <a href="http://www.clearboth.org/html5/dom.html#xml-documents">XML documents</a>, will throw a
+<code><a href="http://www.clearboth.org/html5/infrastructure.html#syntax_err">SYNTAX_ERR</a></code> if the element cannot be serialized to
+XML, or if the given string is not well-formed.</p>
+
+</dd>
+
+</dl><div class="impl">
+
+<p>On getting, if the node's document is an <a href="http://www.clearboth.org/html5/dom.html#html-documents" title="HTML
+documents">HTML document</a>, then the attribute must return the
+result of running the <a href="http://www.clearboth.org/html5/syntax.html#html-fragment-serialization-algorithm">HTML fragment serialization
+algorithm</a> on the node; otherwise, the node's document is an
+<a href="http://www.clearboth.org/html5/dom.html#xml-documents" title="XML documents">XML document</a>, and the attribute
+must return the result of running the <a href="http://www.clearboth.org/html5/the-xhtml-syntax.html#xml-fragment-serialization-algorithm">XML fragment
+serialization algorithm</a> on the node instead (this might raise
+an exception instead of returning a string).</p>
+
+<p>On setting, the following steps must be run:</p>
+
+<ol><li>
+
+<p>If the node's document is an <a href="http://www.clearboth.org/html5/dom.html#html-documents" title="HTML documents">HTML
+document</a>: Invoke the <a href="http://www.clearboth.org/html5/syntax.html#html-fragment-parsing-algorithm">HTML fragment parsing
+algorithm</a>.</p>
+
+<p>If the node's document is an <a href="http://www.clearboth.org/html5/dom.html#xml-documents" title="XML documents">XML
+document</a>: Invoke the <a href="http://www.clearboth.org/html5/the-xhtml-syntax.html#xml-fragment-parsing-algorithm">XML fragment parsing
+algorithm</a>.</p>
+
+<p>In either case, the algorithm must be invoked with the string
+being assigned into the <code title="dom-innerHTML"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-innerhtml">innerHTML</a></code> attribute as the <var title="">input</var>. If the node is an <code>Element</code>
+node, then, in addition, that element must be passed as the <var title="">context</var> element.</p>
+
+<p>If this raises an exception, then abort these steps.</p>
+
+<p>Otherwise, let <var title="">new children</var> be the nodes
+returned.</p>
+
+</li>
+
+<li>
+
+<p>If the attribute is being set on a <code>Document</code> node,
+and that document has an <a href="http://www.clearboth.org/html5/dom.html#active-parser">active parser</a>, then abort
+that parser.</p>
+
+</li>
+
+<li>
+
+<p>Remove the child nodes of the node whose <code title="dom-innerHTML"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-innerhtml">innerHTML</a></code> attribute is being set,
+firing appropriate mutation events.</p>
+
+</li>
+
+<li>
+
+<p>If the attribute is being set on a <code>Document</code>
+node, let <var title="">target document</var> be that
+<code>Document</code> node. Otherwise, the attribute is being
+set on an <code>Element</code> node; let <var title="">target
+document</var> be the <code title="">ownerDocument</code> of
+that <code>Element</code>.</p>
+
+</li>
+
+<li>
+
+<p>Set the <code title="">ownerDocument</code> of all the nodes in
+<var title="">new children</var> to the <var title="">target
+document</var>.</p>
+
+</li>
+
+<li>
+
+<p>Append all the <var title="">new children</var> nodes to the
+node whose <code title="dom-innerHTML"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-innerhtml">innerHTML</a></code> attribute
+is being set, preserving their order, and firing mutation events
+as if a <code>DocumentFragment</code> containing the <var title="">new children</var> had been inserted.</p>
+
+</li>
+
+</ol></div><h4 id="outerhtml"><span class="secno">3.5.5 </span><code title="dom-outerHTML"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-outerhtml">outerHTML</a></code></h4><p class="XXX annotation"><b>Status: </b><i>Last call for comments</i></p><p>The <dfn id="dom-outerhtml" title="dom-outerHTML"><code>outerHTML</code></dfn> DOM
+attribute represents the markup of the element and its contents.</p><dl class="domintro"><dt><var title="">element</var> . <code title="dom-outerHTML"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-outerhtml">outerHTML</a></code> [ = <var title="">value</var> ]</dt>
+
+<dd>
+
+<p>Returns a fragment of HTML or XML that represents the element
+and its contents.</p>
+
+<p>Can be set, to replace the element with nodes parsed from the
+given string.</p>
+
+<p>In the case of <a href="http://www.clearboth.org/html5/dom.html#xml-documents">XML documents</a>, will throw a
+<code><a href="http://www.clearboth.org/html5/infrastructure.html#syntax_err">SYNTAX_ERR</a></code> if the element cannot be serialized to
+XML, or if the given string is not well-formed.</p>
+
+</dd>
+
+</dl><div class="impl">
+
+<p>On getting, if the node's document is an <a href="http://www.clearboth.org/html5/dom.html#html-documents" title="HTML
+documents">HTML document</a>, then the attribute must return the
+result of running the <a href="http://www.clearboth.org/html5/syntax.html#html-fragment-serialization-algorithm">HTML fragment serialization
+algorithm</a> on a fictional node whose only child is the node on
+which the attribute was invoked; otherwise, the node's document is
+an <a href="http://www.clearboth.org/html5/dom.html#xml-documents" title="XML documents">XML document</a>, and the
+attribute must return the result of running the <a href="http://www.clearboth.org/html5/the-xhtml-syntax.html#xml-fragment-serialization-algorithm">XML fragment
+serialization algorithm</a> on that fictional node instead (this
+might raise an exception instead of returning a string).</p>
+
+<p>On setting, the following steps must be run:</p>
+
+<ol><li>
+
+<p>Let <var title="">target</var> be the element whose <code title="dom-outerHTML"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-outerhtml">outerHTML</a></code> attribute is being
+set.</p>
+
+</li>
+
+<li>
+
+<p>If <var title="">target</var> has no parent node, then abort
+these steps. There would be no way to obtain a reference to the
+nodes created even if the remaining steps were run.</p>
+
+</li>
+
+<li>
+
+<p>If <var title="">target</var>'s parent node is a
+<code>Document</code> object, throw a
+<code><a href="http://www.clearboth.org/html5/infrastructure.html#no_modification_allowed_err">NO_MODIFICATION_ALLOWED_ERR</a></code> exception and abort these
+steps.</p>
+
+</li>
+
+<li>
+
+<p>Let <var title="">parent</var> be <var title="">target</var>'s
+parent node, unless that is a <code>DocumentFragment</code> node,
+in which case let <var title="">parent</var> be an arbitrary
+<code><a href="http://www.clearboth.org/html5/semantics.html#the-body-element-0">body</a></code> element.</p>
+
+</li>
+
+<li>
+
+<p>If <var title="">target</var>'s document is an <a href="http://www.clearboth.org/html5/dom.html#html-documents" title="HTML documents">HTML document</a>: Invoke the <a href="http://www.clearboth.org/html5/syntax.html#html-fragment-parsing-algorithm">HTML
+fragment parsing algorithm</a>.</p>
+
+<p>If <var title="">target</var>'s document is an <a href="http://www.clearboth.org/html5/dom.html#xml-documents" title="XML
+documents">XML document</a>: Invoke the <a href="http://www.clearboth.org/html5/the-xhtml-syntax.html#xml-fragment-parsing-algorithm">XML fragment
+parsing algorithm</a>.</p>
+
+<p>In either case, the algorithm must be invoked with the string
+being assigned into the <code title="dom-outerHTML"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-outerhtml">outerHTML</a></code> attribute as the <var title="">input</var>, and <var title="">parent</var> as the <var title="">context</var> element.</p>
+
+<p>If this raises an exception, then abort these steps.</p>
+
+<p>Otherwise, let <var title="">new children</var> be <var title="">target</var>s returned.</p>
+
+</li>
+
+<li>
+
+<p>Set the <code title="">ownerDocument</code> of all the nodes in
+<var title="">new children</var> to <var title="">target</var>'s
+document.</p>
+
+</li>
+
+<li>
+
+<p>Remove <var title="">target</var> from its parent node, firing
+mutation events as appropriate, and then insert in its place all
+the <var title="">new children</var> nodes, preserving their
+order, and again firing mutation events as if a
+<code>DocumentFragment</code> containing the <var title="">new
+children</var> had been inserted.</p>
+
+</li>
+
+</ol></div><h4 id="insertadjacenthtml"><span class="secno">3.5.6 </span><code title="dom-insertAdjacentHTML"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-insertadjacenthtml">insertAdjacentHTML()</a></code></h4><dl class="domintro"><dt><var title="">element</var> . <code title="dom-insertAdjacentHTML"><a href="http://www.clearboth.org/html5/embedded-content-0.html#dom-insertadjacenthtml">insertAdjacentHTML</a></code>(<var title="">position</var>, <var title="">text</var>)</dt>
+
+<dd>
+
+<p>Parsed the given string <var title="">text</var> as HTML or XML
+and inserts the resulting nodes into the tree in the position
+given by the <var title="">position</var> argument, as
+follows:</p>
+
+<dl><dt>"beforebegin"</dt>
+<dd>Before the element itself.</dd>
+<dt>"afterbegin"</dt>
+<dd>Just inside the element, before its first child.</dd>
+<dt>"beforeend"</dt>
+<dd>Just inside the element, after its last child.</dd>
+<dt>"afterend"</dt>
+<dd>After the element itself.</dd>
+</dl><p>Throws a <code><a href="http://www.clearboth.org/html5/infrastructure.html#syntax_err">SYNTAX_ERR</a></code> exception the arguments have
+invalid values (e.g., in the case of <a href="http://www.clearboth.org/html5/dom.html#xml-documents">XML documents</a>,
+if the given string is not well-formed).</p>
+
+<p>Throws a <code><a href="http://www.clearboth.org/html5/infrastructure.html#no_modification_allowed_err">NO_MODIFICATION_ALLOWED_ERR</a></code> exception if
+the given position isn't possible (e.g. inserting elements after
+the root element of a <code>Document</code>).</p>
+
+</dd>
+
+</dl><div class="impl">
+
+<p>The <dfn id="dom-insertadjacenthtml" title="dom-insertAdjacentHTML"><code>insertAdjacentHTML(<var title="">position</var>, <var title="">text</var>)</code></dfn>
+method, when invoked, must run the following algorithm:</p>
+
+<ol><li>
+
+<p>Let <var title="">position</var> and <var title="">text</var>
+be the method's first and second arguments, respectively.</p>
+
+</li>
+
+<li>
+
+<p>Let <var title="">target</var> be the element on which the
+method was invoked.</p>
+
+</li>
+
+<li>
+
+<p>Use the first matching item from this list:</p>
+
+<dl><dt>If <var title="">position</var> is an <a href="http://www.clearboth.org/html5/infrastructure.html#ascii-case-insensitive">ASCII
+case-insensitive</a> match for the string "beforebegin"</dt>
+<dt>If <var title="">position</var> is an <a href="http://www.clearboth.org/html5/infrastructure.html#ascii-case-insensitive">ASCII
+case-insensitive</a> match for the string "afterend"</dt>
+
+<dd>
+
+<p>If <var title="">target</var> has no parent node, then abort
+these steps.</p>
+
+<p>If <var title="">target</var>'s parent node is a
+<code>Document</code> object, then throw a
+<code><a href="http://www.clearboth.org/html5/infrastructure.html#no_modification_allowed_err">NO_MODIFICATION_ALLOWED_ERR</a></code> exception and abort
+these steps.
+
+</p><p>Otherwise, let <var title="">context</var> be the parent node
+of <var title="">target</var>.</p>
+
+</dd>
+
+<dt>If <var title="">position</var> is an <a href="http://www.clearboth.org/html5/infrastructure.html#ascii-case-insensitive">ASCII
+case-insensitive</a> match for the string "afterbegin"</dt>
+<dt>If <var title="">position</var> is an <a href="http://www.clearboth.org/html5/infrastructure.html#ascii-case-insensitive">ASCII
+case-insensitive</a> match for the string "beforeend"</dt>
+
+<dd>
+
+<p>Let <var title="">context</var> be the same as <var title="">target</var>.</p>
+
+</dd>
+
+<dt>Otherwise</dt>
+
+<dd>
+
+<p>Throw a <code><a href="http://www.clearboth.org/html5/infrastructure.html#syntax_err">SYNTAX_ERR</a></code> exception.</p>
+
+</dd>
+
+</dl></li>
+
+<li>
+
+<p>If <var title="">target</var>'s document is an <a href="http://www.clearboth.org/html5/dom.html#html-documents" title="HTML documents">HTML document</a>: Invoke the <a href="http://www.clearboth.org/html5/syntax.html#html-fragment-parsing-algorithm">HTML
+fragment parsing algorithm</a>.</p>
+
+<p>If <var title="">target</var>'s document is an <a href="http://www.clearboth.org/html5/dom.html#xml-documents" title="XML
+documents">XML document</a>: Invoke the <a href="http://www.clearboth.org/html5/the-xhtml-syntax.html#xml-fragment-parsing-algorithm">XML fragment
+parsing algorithm</a>.</p>
+
+<p>In either case, the algorithm must be invoked with <var title="">text</var> as the <var title="">input</var>, and the
+element selected in by the previous step as the <var title="">context</var> element.</p>
+
+<p>If this raises an exception, then abort these steps.</p>
+
+<p>Otherwise, let <var title="">new children</var> be <var title="">target</var>s returned.</p>
+
+</li>
+
+<li>
+
+<p>Set the <code title="">ownerDocument</code> of all the nodes in
+<var title="">new children</var> to <var title="">target</var>'s
+document.</p>
+
+</li>
+
+<li>
+
+<p>Use the first matching item from this list:</p>
+
+<dl><dt>If <var title="">position</var> is an <a href="http://www.clearboth.org/html5/infrastructure.html#ascii-case-insensitive">ASCII
+case-insensitive</a> match for the string "beforebegin"</dt>
+
+<dd>
+
+<p>Insert all the <var title="">new children</var> nodes
+immediately before <var title="">target</var>.</p>
+
+</dd>
+
+<dt>If <var title="">position</var> is an <a href="http://www.clearboth.org/html5/infrastructure.html#ascii-case-insensitive">ASCII
+case-insensitive</a> match for the string "afterbegin"</dt>
+
+<dd>
+
+<p>Insert all the <var title="">new children</var> nodes before
+the first child of <var title="">target</var>, if there is
+one. If there is no such child, append them all to <var title="">target</var>.</p>
+
+</dd>
+
+<dt>If <var title="">position</var> is an <a href="http://www.clearboth.org/html5/infrastructure.html#ascii-case-insensitive">ASCII
+case-insensitive</a> match for the string "beforeend"</dt>
+
+<dd>
+
+<p>Append all the <var title="">new children</var> nodes to <var title="">target</var>.</p>
+
+</dd>
+
+<dt>If <var title="">position</var> is an <a href="http://www.clearboth.org/html5/infrastructure.html#ascii-case-insensitive">ASCII
+case-insensitive</a> match for the string "afterend"</dt>
+
+<dd>
+
+<p>Insert all the <var title="">new children</var> nodes
+immediately after <var title="">target</var>.</p>
+
+</dd>
+
+</dl><p>The <var title="">new children</var> nodes must be inserted in
+a manner that preserves their order and fires mutation events as
+if a <code>DocumentFragment</code> containing the <var title="">new children</var> had been inserted.</p>
+
+</li>
+
+</ol></div>
+</div>
+	<script type="text/javascript" src="embedded-content-0_files/translationCore.js"> </script>
+</div></body></html>

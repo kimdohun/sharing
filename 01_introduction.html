@@ -1,0 +1,579 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-US-x-Hixie"><head>
+
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>1 Introduction — HTML 5</title>
+	<link rel="stylesheet" type="text/css" href="introduction_files/w3c.css">
+	<link href="data:text/css," rel="stylesheet" title="Complete specification"><link href="data:text/css,.impl%20%7B%20display:%20none;%20%7D" rel="alternate stylesheet" title="Author documentation only">
+	<link href="data:text/css,.impl%20%7B%20background:%20%23FFEEEE;%20%7D" rel="alternate stylesheet" title="Highlight implementation requirements">
+	<link href="introduction_files/W3C-WD.css" rel="stylesheet" type="text/css"><!-- ZZZ ED vs WD -->
+	<script src="introduction_files/link-fixup.js"></script>
+	<link href="http://www.w3.org/TR/html5/spec.html#contents" title="Table of contents" rel="index">
+	<link href="http://www.w3.org/TR/html5/infrastructure.html" title="2 Common infrastructure" rel="next">
+	<link rel="stylesheet" type="text/css" href="introduction_files/translation.css">
+</head><body onload="fixBrokenLink(); fixBrokenLink();">
+<div class="head">
+<p><a href="http://www.w3.org/"><img alt="W3C" src="introduction_files/w3c_home.png" height="48" width="72"></a></p>
+<h1>HTML 5</h1>
+<h2 class="no-num no-toc" id="a-vocabulary-and-associated-apis-for-html-and-xhtml">A vocabulary and associated APIs for HTML and XHTML</h2>
+</div><nav class="hidden">
+<a href="http://www.clearboth.org/html5/html%205.htm#contents">Table of contents</a> –
+<a href="http://www.clearboth.org/html5/infrastructure.html">2 Common infrastructure →</a>
+</nav><p>This is revision 1.2852.</p><ol id="toc"><li class="H2"><a href="#introduction"><span class="secno">1 </span>Introduction</a></li><li class="H3"><a href="#background"><span class="secno">1.1 </span>Background</a></li><li class="H3"><a href="#audience"><span class="secno">1.2 </span>Audience</a></li><li class="H3"><a href="#scope"><span class="secno">1.3 </span>Scope</a></li><li class="H3"><a href="#history-1"><span class="secno">1.4 </span>History</a></li><li class="H3"><a href="#design-notes"><span class="secno">1.5 </span>Design notes</a></li><li class="H4"><a href="#serializability-of-script-execution"><span class="secno">1.5.1 </span>Serializability of script execution</a></li><li class="H4"><a href="#compliance-with-other-specifications"><span class="secno">1.5.2 </span>Compliance with other specifications</a></li><li class="H3"><a href="#relationships-to-other-specifications"><span class="secno">1.6 </span>Relationships to other specifications</a></li><li class="H4"><a href="#relationship-to-html-4.01-and-dom2-html"><span class="secno">1.6.1 </span>Relationship to HTML&nbsp;4.01 and DOM2 HTML</a></li><li class="H4"><a href="#relationship-to-xhtml-1.x"><span class="secno">1.6.2 </span>Relationship to XHTML 1.x</a></li><li class="H3"><a href="#html-vs-xhtml"><span class="secno">1.7 </span>HTML vs XHTML</a></li><li class="H3"><a href="#structure-of-this-specification"><span class="secno">1.8 </span>Structure of this specification</a></li><li class="H4"><a href="#how-to-read-this-specification"><span class="secno">1.8.1 </span>How to read this specification</a></li><li class="H4"><a href="#typographic-conventions"><span class="secno">1.8.2 </span>Typographic conventions</a></li><li class="H3"><a href="#a-quick-introduction-to-html"><span class="secno">1.9 </span>A quick introduction to HTML</a></li></ol>
+
+<h2 id="introduction"><span class="secno">1 </span>Introduction</h2>
+<p class="XXX annotation"><b>Status: </b><i>Working draft</i></p>
+<h3 id="background"><span class="secno">1.1 </span>Background</h3>  
+<p>이 섹션은 규범이 아닙니다.</p>
+  <p class=" KR" lang="KR">월드 와이드 웹의 마크업 언어는 항상
+HTML 이어 왔습니다. HTML은 원래 과학 문서를 의미적으로 기술하기 위하여 디자인되었던 언어였지만, HTML의 디자인과
+이행은 몇년에 걸쳐 변화되어, 다른 타입의 문서를 기술하는데에도 사용할 수 있게 되었습니다.</p>
+  <p class=" smallEn" lang="EN">The World Wide Web's markup language has always been HTML. HTML
+  was primarily designed as a language for semantically describing
+  scientific documents, although its general design and adaptations
+  over the years have enabled it to be used to describe a number of
+  other types of documents.</p>
+  <p class=" KR" lang="KR">HTML
+의 주된 분야이지만 적절히 다루어지지 않은 분야는, 웹 어플리케이션이라 불리는 모호한 분야입니다. 이 명세서에서는 이것을
+교정하는 시도를 할 것이며, 동시에 지난 몇년간 제기되었던 이슈들을 다룰 수 있도록 HTML 명세를 업데이트할 것입니다.</p>
+  <p class=" smallEn" lang="EN">The main area that has not been adequately addressed by HTML is a
+  vague subject referred to as Web Applications. This specification
+  attempts to rectify this, while at the same time updating the HTML
+  specifications to address issues raised in the past few years.</p>
+  
+  <h3 id="audience"><span class="secno">1.2 </span>Audience</h3><p class="XXX annotation"><b>Status: </b><i>Working draft</i></p>
+  <p>이 섹션은 규범이 아닙니다.</p>
+  <p class=" KR" lang="KR">이 명세서는, 포함되어 있는 기능들을 이용하여 문서와 스크립트를 작성하는 사람들과, 여기에 기술된 기능을 이용하여 유저 에이전트를 제작하는 이행자들과, 또한 문서들, 혹은 이행안에 수정을 가하기를 원하는 사람들을 위한 것입니다.</p>
+  <p class=" smallEn" lang="EN">This specification is intended for authors of documents and
+  scripts that use the features defined in this specification<span class="impl">, implementors of tools that operate on pages that use
+  the features defined in this specification, and individuals wishing
+  to establish the correctness of documents or implementations with
+  respect to the requirements of this specification</span>.</p>
+  <p class=" KR" lang="KR">이
+문서는, 웹 기술에 어느정도라도 익숙하지 않은 사람들에게는 아마도 적합하지 않을 것인데, 왜냐하면 이 문서는 정확한 표현을 위해
+명쾌함을 어느정도 희생하고 있으며, 또한 완전함을 위해서 간결함을 희생하고 있기 때문입니다. 좀 더 친숙한 설명서와 가이드들이
+있을 수 있습니다.</p>
+  <p class=" smallEn" lang="EN">This document is probably not suited to readers who do not
+  already have at least a passing familiarity with Web technologies,
+  as in places it sacrifices clarity for precision, and brevity for
+  completeness. More approachable tutorials and authoring guides can
+  provide a gentler introduction to the topic.</p>
+  <p class=" KR" lang="KR">특
+정지어 말한다면, DOM 코어와 DOM 이벤트의 기초에 대한 어느정도의 지식이 있어야 이 명세서에서 다루는 좀 더 기술적인
+부분을 이해할 수 있을 것입니다. 웹 IDL, HTTP, XML, 유니코드, 문자 인코딩, 자바스크립트, CSS에 대한 지식
+역시 도움이 되는 곳이 있겠지만, 그것이 필수적이지는 않습니다.</p>
+  <p class=" smallEn" lang="EN">In particular, familiarity with the basics of DOM Core and DOM
+  Events is necessary for a complete understanding of some of the more
+  technical parts of this specification. An understanding of Web IDL,
+  HTTP, XML, Unicode, character encodings, JavaScript, and CSS will
+  also be helpful in places but is not essential.</p>
+
+  <h3 id="scope"><span class="secno">1.3 </span>Scope</h3>
+  <p>이 섹션은 규범이 아닙니다.</p>
+  <p class=" KR" lang="KR">이 명세서는 의미 레벨에서의 마크업 언어를 제공하며, 또한 의미 레벨의 스크립팅 API를 제공하여 웹 상에서 정적인 문서로부터 동적인 어플리케이션까지 다양한 페이지를 저작하도록 하는 것에 초점을 맞추고 있습니다.</p>
+  <p class=" smallEn" lang="EN">This specification is limited to providing a semantic-level
+  markup language and associated semantic-level scripting APIs for
+  authoring accessible pages on the Web ranging from static documents
+  to dynamic applications.</p>
+  <p class=" KR" lang="KR">이
+명세서가 다루는 영역은 미디어에 국한된, 표현의 세부사항을 다루고자 하는 것이 아닙니다(웹 브라우저의 기본적인 렌더링 규칙이 이
+명세서의 후반에 포함되어 있고, CSS를 다루는 몇가지 기술 사항이 언어의 일부로서 소개되기는 할 것입니다).</p>
+  <p class=" smallEn" lang="EN">The scope of this specification does not include providing
+  mechanisms for media-specific customization of presentation
+  (although default rendering rules for Web browsers are included at
+  the end of this specification, and several mechanisms for hooking
+  into CSS are provided as part of the language).</p>
+  <p class=" KR" lang="KR">이
+명세서는 웹 브라우저들이 지원하는 HTML과 DOM의 모든 기능들을 문서화하고자 하는 것이 아닙니다. 브라우저들은 접근성
+측면에서 매우 좋지 않거나, 혹은 부적절한 기능들을 다수 포함합니다. 예를 들어, blink 요소는 완전히 표현적이며, 텍스트가
+깜박이는 효과를 원하는 사람은 CSS에서 방법을 찾아야 할 것입니다.</p>
+  <p class=" smallEn" lang="EN">The scope of this specification does not include documenting
+  every HTML or DOM feature supported by Web browsers. Browsers
+  support many features that are considered to be very bad for
+  accessibility or that are otherwise inappropriate. For example, the
+  <code><a href="http://www.w3.org/TR/html5/obsolete.html#blink">blink</a></code> element is clearly presentational and authors
+  wishing to cause text to blink should instead use CSS.</p>
+  <p class=" KR" lang="KR">이
+명세서는 운영체제의 모든 것에 대해 다루려고 하지 않습니다. 좀 더 상세히 말하자면, 하드웨어를 조절하는 소프트웨어, 이미지를
+다루는 툴, 그리고 사용자들이 고성능의 웍스테이션에 사용하고 싶어 할, 일상적인 작업에서 필요한 어플리케이션 등은 이 문서의
+초점에서 벗어납니다. 어플리케이션의 관점에 대해 좀 더 말한다면, 이 명세서는 사람들이 이따금씩, 또는 주기적으로 사용하더라도
+서로 다른 장소에서 사용하게 되는, 고성능의 CPU를 필요로 하지 않는 어플리케이션에 대해 다루게 될 것입니다. 예를 들어
+온라인 거래 시스템, 검색 시스템, 게임(특히, 다중사용자 온라인게임), 공용의 전화번호부 혹은 주소록, 통신 소프트웨어(이메일
+클라이언트, 메시징 클라이언트, 토론 소프트웨어), 문서 편집 소프트웨어 등을 말합니다.</p>
+  <p class=" smallEn" lang="EN">The scope of this specification is not to describe an entire
+  operating system. In particular, hardware configuration software,
+  image manipulation tools, and applications that users would be
+  expected to use with high-end workstations on a daily basis are out
+  of scope. In terms of applications, this specification is targeted
+  specifically at applications that would be expected to be used by
+  users on an occasional basis, or regularly but from disparate
+  locations, with low CPU requirements. For instance online purchasing
+  systems, searching systems, games (especially multiplayer online
+  games), public telephone books or address books, communications
+  software (e-mail clients, instant messaging clients, discussion
+  software), document editing software, etc.</p>
+  
+  <h3 id="history-1"><span class="secno">1.4 </span>History</h3>
+  <p>이 섹션은 규범이 아닙니다.</p>
+  <p class=" KR" lang="KR">HTML
+5 작업은 원래 2003년에 시작되었는데, HTML 4의 폼을 확장해서 XForms 1.0이 소개한 기능 중 상당수를 구현 -
+현존하는 HTML 웹 페이지들과 호환성이 없는 렌더링 엔진을 사용하지 않고도 - 할 수 있음을 보여주고자 했던 시도에서
+비롯됩니다. 이 시점의 초기 단계에서, 드래프트가 이미 공식적으로 시작되었고, 수많은 요구들이 있었지만 이 명세서는 오직 오페라
+소프트웨어의 저작권 아래에 있었습니다.</p>
+  <p class=" smallEn" lang="EN">Work on HTML&nbsp;5 originally started in late 2003, as a proof
+  of concept to show that it was possible to extend HTML&nbsp;4's forms to
+  provide many of the features that XForms 1.0 introduced, without
+  requiring browsers to implement rendering engines that were
+  incompatible with existing HTML Web pages. At this early stage,
+  while the draft was already publicly available, and input was
+  already being solicited from all sources, the specification was only
+  under Opera Software's copyright.</p>
+  <p class=" KR" lang="KR">2004
+년 초반, 이러한 노력의 기반에 존재했던 원칙들이, 단지 폼에만 관련되었던 기능들을 다루는 드래프트 초안과 함께, 모질라와
+오페라가 공동으로 운영하던 웹 어플리케이션의 미래에 대해 다루던 워크샵에 의해 W3C로 전달되었습니다. 이 제안은 거절당했는데,
+이것이 이미 웹의 혁명을 위해 결정된 방향과 충돌하였기 때문입니다.</p>
+  <p class=" smallEn" lang="EN">In early 2004, some of the principles that underlie this effort,
+  as well as an early draft proposal covering just forms-related
+  features, were presented to the W3C jointly by Mozilla and Opera at
+  a workshop discussing the future of Web Applications on the Web. The
+  proposal was rejected on the grounds that the proposal conflicted
+  with the previously chosen direction for the Web's evolution.</p>
+  <p class=" KR" lang="KR">그
+직후, 애플, 모질라, 오페라는 공동으로 그들이 제안했던 내용을 계속해서 발전시켜 나갈 것을 선언하였습니다. 공개적인 메일링
+리스트들이 만들어졌고, 그들의 초안은 WHATWG 사이트로 이동되었습니다. 이에 대한 수정, 그리고 그 명세를 재사용할 수 있는
+저작권은 3개 회사가 공동으로 소유하게 되었습니다.</p>
+  <p class=" smallEn" lang="EN">Shortly thereafter, Apple, Mozilla, and Opera jointly announced
+  their intent to continue working on the effort. A public mailing
+  list was created, and the drafts were moved to the WHATWG site. The
+  copyright was subsequently amended to be jointly owned by all three
+  vendors, and to allow reuse of the specifications.</p>
+  <p class=" KR" lang="KR">2006
+년, W3C는 이 명세에 관심을 표현했고, WHATWG와 함께 HTML 5를 개발해나갈 워킹 그룹이 만들어졌습니다. 이 그룹은
+2007년에 시작되었습니다. 애플, 모질라, 오페라는 W3C가 관리하는 저작권을 통해 명세서를 발행할 것을 허가하였는데,
+WHATWG 사이트에 좀 덜 제한적인 버전을 제공하는 조건이었습니다.</p>
+  <p class=" smallEn" lang="EN">In 2006, the W3C expressed interest in the specification, and
+  created a working group chartered to work with the WHATWG on the
+  development of the HTML&nbsp;5 specifications. The working group
+  opened in 2007. Apple, Mozilla, and Opera allowed the W3C to publish
+  the specifications under the W3C copyright, while keeping versions
+  with the less restrictive license on the WHATWG site.</p>
+  <p class=" KR" lang="KR">그때부터 두 그룹은 함께 작업해오고 있습니다.</p>
+  <p class=" smallEn" lang="EN">Since then, both groups have been working together.</p>
+  
+  <h3 id="design-notes"><span class="secno">1.5 </span>Design notes</h3>
+  <p>이 섹션은 규범이 아닙니다.</p>
+  
+  <p class=" KR" lang="KR">HTML의 많은 모습들이, 언뜻 보기에는 넌센스이며 모순적이라는 점을 인정해야만 합니다.</p>
+  <p class=" smallEn" lang="EN">It must be admitted that many aspects of HTML appear at first
+  glance to be nonsensical and inconsistent.</p>
+  <p class=" KR" lang="KR">HTML은, DOM API를 지원함에 있어, 다른 모든 기능들에서 그랬던 것과 마찬가지로, 오랜 기간에 거쳐 수많은 사람들이 참여하게 되었는데, 많은 경우 이들은 상대방의 존재를 알지 못했습니다.</p>
+  <p class=" smallEn" lang="EN">HTML, its supporting DOM APIs, as well as many of its supporting
+  technologies, have been developed over a period of several decades
+  by a wide array of people with different priorities who, in many
+  cases, did not know of each other's existence.</p>
+  <p class=" KR" lang="KR">결
+과적으로 다양한 소스들로부터 기능이 추가되었고, 따라서 늘 일관적이지 못했습니다. 게다가, 웹의 독특한 특징 때문에, 이를
+이행하면서 생기는 버그들은 종종 암묵적인 관례가 되었고, 이제는 정당한 표준으로 여겨질 정도인데, (웹 페이지의) 내용들이 이
+버그가 수정되기도 전에 이 버그에 의존하여 작성되었기 때문입니다.</p>
+  <p class=" smallEn" lang="EN">Features have thus arisen from many sources, and have not always
+  been designed in especially consistent ways. Furthermore, because of
+  the unique characteristics of the Web, implementation bugs have
+  often become de-facto, and now de-jure, standards, as content is
+  often unintentionally written in ways that rely on them before they
+  can be fixed.</p>
+  <p class=" KR" lang="KR">이 모든 것에도 불구하고, 명확한 디자인 목적을 향한 노력이 있어 왔습니다. 이것들은 이후 이어질 몇개의 절에서 다루게 될 것입니다.</p>
+  <p class=" smallEn" lang="EN">Despite all this, efforts have been made to adhere to certain
+  design goals. These are described in the next few subsections.</p>
+  
+  <h4 id="serializability-of-script-execution"><span class="secno">1.5.1 </span>Serializability of script execution</h4>
+  <p>이 섹션은 규범이 아닙니다.</p>
+  <p class=" KR" lang="KR">웹
+저작자들이 멀티쓰레딩의 복잡함에 고민하는 일을 없애기 위해, HTML과 DOM API는 어떠한 스크립트도 다른 스크립트의 동시
+실행에 대해 전혀 감지할 수 없도록 디자인되었습니다. 심지어 제작자들에게도, 모든 브라우징 컨텍스트 내에서의 모든 스크립트
+실행을 직렬화 하는 것으로 생각하게끔 의도되었습니다.</p>
+  <p class=" smallEn" lang="EN">To
+avoid exposing Web authors to the complexities of multithreading, the
+HTML and DOM APIs are designed such that no script can ever detect the
+simultaneous execution of other scripts. Even with <span title="Worker">workers</span>,
+the intent is that the behavior of implementations can be thought of as
+completely serializing the execution of all scripts in all <a href="http://www.w3.org/TR/html5/browsers.html#browsing-context" title="browsing context">browsing contexts</a>.</p>
+  <p class=" KR" lang="KR"><code>navigator.getStorageUpdates()</code>메서드는, 이 모델에서는, 호출하는 스크립트가 차단된 상태에서 다른 스크립트의 실행을 허용하는 것과 같습니다.</p>
+  <p class="note smallEn" lang="EN">The <code title="dom-navigator-GetStorageUpdates"><a href="http://www.w3.org/TR/html5/browsers.html#dom-navigator-getstorageupdates">navigator.getStorageUpdates()</a></code>
+  method, in this model, is equivalent to allowing other scripts to
+  run while the calling script is blocked.</p>
+  
+  <h4 id="compliance-with-other-specifications"><span class="secno">1.5.2 </span>Compliance with other specifications</h4>
+  <p>이 섹션은 규범이 아닙니다.</p>
+  <p class=" KR" lang="KR">이
+명세는 다른 많은 명세들과 상호작용하며, 의존하기도 합니다. 불행하게도, 현존하는 컨텐츠들과 호환되고자 하는 의도의 결과로,
+몇몇 상황에서는 이 명세서가 다른 명세서들의 요구사항을 위반하는 경우도 있습니다. 이러한 경우가 발생할 때 마다, 이것을
+"의도된 위반" 이라고 기록할 것입니다.</p>
+  <p class=" smallEn" lang="EN">This specification interacts with and relies on a wide variety of
+  other specifications. In certain circumstances, unfortunately, the
+  desire to be compatible with legacy content has led to this
+  specification violating the requirements of these other
+  specifications. Whenever this has occurred, the transgressions have
+  been noted as "<dfn id="willful-violation" title="willful violation">willful
+  violations</dfn>".</p>
+  
+  <h3 id="relationships-to-other-specifications"><span class="secno">1.6 </span>Relationships to other specifications</h3><h4 id="relationship-to-html-4.01-and-dom2-html"><span class="secno">1.6.1 </span>Relationship to HTML&nbsp;4.01 and DOM2 HTML</h4><p class="XXX annotation"><b>Status: </b><i>Working draft</i></p>
+  <p>이 섹션은 규범이 아닙니다.</p>
+  <p class=" KR" lang="KR">이 명세서는 HTML 언어, 그리고 그와 연관된 DOM API 의 새로운 개정안에 대해 기술합니다.</p>
+  <p class=" smallEn" lang="EN">This specification describes a new revision of the HTML language
+  and its associated DOM API.</p>
+  <p class=" KR" lang="KR">기
+존의 HTML 4, DOM 2 에서 이미 구현되어 있는 기능들에 대한 이 명세서의 요구사항은, 기본적으로 지난 10년간의 이행과
+배치에 대한 경험에 기초합니다. 몇몇 기능들은 현 상황에서의 최선에 기초하여 삭제되었습니다; 이들 중 일부에 대한 이행
+요구사항은, 이미 널리 사용되고 있는 비표준적 기능과 함께, 이 명세서에서도 포함되어져 있는데, 이것은 이미 존재하는 컨텐츠들을
+계속해서 지원하기 위함입니다.</p>
+  <p class=" smallEn" lang="EN">The requirements in this specification for features that were
+  already in HTML&nbsp;4 and DOM2 HTML are based primarily on the
+  implementation and deployment experience collected over the past ten
+  years. Some features have been removed from the language, based on
+  best current practices; implementation requirements for some of
+  these, as well as for non-standard features that have nonetheless
+  garnered wide use, are still included in this specification to allow
+  implementations to continue supporting legacy content.  <a href="http://www.w3.org/TR/html5/references.html#refsHTML4">[HTML4]</a> <a href="http://www.w3.org/TR/html5/references.html#refsDOM2HTML">[DOM2HTML]</a></p>
+  <p class=" KR" lang="KR">HTML 4 명세서에서 정의하는 언어와 이 명세서와의 차이를 좀 더 자세하게 설명하는 문서를 W3C HTML 워킹 그룹에서 제공하고 있습니다.</p>
+  <p class=" smallEn" lang="EN">A separate document has been published by the W3C HTML working
+  group to provide a more detailed reference of the differences
+  between this specification and the language described in the HTML&nbsp;4
+  specification. <a href="http://www.w3.org/TR/html5/references.html#refsHTMLDIFF">[HTMLDIFF]</a></p>
+  
+  <h4 id="relationship-to-xhtml-1.x"><span class="secno">1.6.2 </span>Relationship to XHTML 1.x</h4><p class="XXX annotation"><b>Status: </b><i>Working draft</i></p>
+  <p>이 섹션은 규범이 아닙니다.</p>
+  <p class=" KR" lang="KR">이 명세서는 XML 직렬화 사양을 HTML 사전에 적용한 규범적 정의로서의 XHTML 1.0 을 대체할 목적으로 작성되었습니다.</p>
+  <p class=" smallEn" lang="EN">This specification is intended to replace XHTML 1.0 as the
+  normative definition of the XML serialization of the HTML
+  vocabulary. <a href="http://www.w3.org/TR/html5/references.html#refsXHTML10">[XHTML10]</a></p>
+  <p class=" KR" lang="KR">이
+명세서가 XHTML 1.1 모듈 사양과 XHTML 1.1에서 정의된 의미론과 요구사항을 업데이트 할 경우, 이 명세서는
+그들(다른 명세를 포함하여)이 정의하고 사용한 모듈 규칙에 대한 대체를 제공하려고 시도하지는 않으며, 따라서 HTML 5는
+XHTML 1.1의 완전한 대체로 간주되어서는 안됩니다.</p>
+	<p class=" smallEn" lang="EN">While this specification updates the semantics and requirements
+  of the vocabulary defined by XHTML Modularization 1.1 and used by
+  XHTML 1.1, it does not attempt to provide a replacement for the
+  modularization scheme defined and used by those (and other)
+  specifications, and therefore cannot be considered a complete
+  replacement for them. <a href="http://www.w3.org/TR/html5/references.html#refsXHTMLMOD">[XHTMLMOD]</a> <a href="http://www.w3.org/TR/html5/references.html#refsXHTML11">[XHTML11]</a></p>
+  <p class=" KR" lang="KR">따라서, XHTML 1.1의 모듈 규칙을 필요로 하지 않는 저자들과 브라우저 벤더들은 이 명세를 XHTML 1.x 의 대체로 간주하여도 되지만, 그러한 모듈 규칙을 필요로 한다면 XHTML 1.1의 명세를 적용할 것을 권합니다.</p>
+ <p class=" smallEn" lang="EN">Thus, authors and implementors who do not need such a
+  modularization scheme can consider this specification a replacement
+  for XHTML 1.x, but those who do need such a mechanism are encouraged
+  to continue using the XHTML 1.1 line of specifications.</p>
+  
+  <h3 id="html-vs-xhtml"><span class="secno">1.7 </span>HTML vs XHTML</h3><p class="XXX annotation"><b>Status: </b><i>Controversial Working Draft</i></p>
+  <p>이 섹션은 규범이 아닙니다.</p>
+  <p class=" KR" lang="KR">이 명세는 문서와 어플리케이션을 다루는 추상화된 언어에 대해 정의하며, 또한 이 언어를 이용하여 메모리 내부의 상황들과 상호 작용하는 API에 대해 정의합니다.</p>
+  <p class=" smallEn" lang="EN">This specification defines an abstract language for describing
+  documents and applications, and some APIs for interacting with
+  in-memory representations of resources that use this language.</p>
+  <p class=" KR" lang="KR">메모리 내부 상황들은 DOM 5 HTML, 또는 간단하게 DOM 이라 칭합니다.</p>
+  <p class=" smallEn" lang="EN">The in-memory representation is known as "DOM5 HTML", or "the
+  DOM" for short.</p>
+  <p class=" KR" lang="KR">이 추상화된 언어를 사용하여 자원들을 전달하기 위해 사용되는 몇가지 견고한 문법들이 있는데, 이 명세서에서는 그중 두가지를 정의합니다.</p>
+  <p class=" smallEn" lang="EN">There are various concrete syntaxes that can be used to transmit
+  resources that use this abstract language, two of which are defined
+  in this specification.</p>
+  <p class=" KR" lang="KR">첫
+번째 문법은 HTML 5 입니다. 이것은 대부분의 저자들에게 권하는 포맷입니다. 이것은 거의 대부분의 기성 웹 브라우저와
+호환됩니다. 문서가 text/html 마임 타입으로 전송된다면, 웹 브라우저는 그것을 받아서 HTML 5 문서로 처리하게 될
+것입니다.</p>
+  <p class=" smallEn" lang="EN">The first such concrete syntax is "HTML5". This is the format
+  recommended for most authors. It is compatible with most legacy Web
+  browsers. If a document is transmitted with the <a href="http://www.w3.org/TR/html5/infrastructure.html#mime-type">MIME
+  type</a> <code><a href="http://www.w3.org/TR/html5/iana-considerations.html#text-html">text/html</a></code>, then it will be processed as an
+  "HTML5" document by Web browsers.</p>
+  <p class=" KR" lang="KR">두
+번째 문법은 XML을 사용하며, XHTML 5 라고 칭할 것입니다. 문서가 XML MIME 타입 -
+application/xhtml+xml 과 같은 - 으로 전송되어질 경우, 브라우저는 그것을 HTML 5 문서로 취급할 것이며,
+XML 프로세서가 그것을 다루게 될 것입니다. XML 프로세싱과 HTML 프로세싱은 서로 다르다는 점을 상기하기 바랍니다 :
+즉, 사소한 문법적 오류도 XML 문서가 완전히 표현되는 것을 막겠지만, HTML5 문법에서는 이를 무시할 것입니다.</p>
+  <p class=" smallEn" lang="EN">The second concrete syntax uses XML, and is known as
+  "XHTML5". When a document is transmitted with an <a href="http://www.w3.org/TR/html5/infrastructure.html#xml-mime-type">XML MIME
+  type</a>, such as <code><a href="http://www.w3.org/TR/html5/iana-considerations.html#application-xhtml-xml">application/xhtml+xml</a></code>, then it is
+  treated as an "XHTML5" document by Web browsers, which means that it
+  will be handled by an XML processor. Authors are reminded that the
+  processing for XML and HTML differs; in particular, even minor
+  syntax errors will prevent an XML document from being rendered
+  fully, whereas they would be ignored in the "HTML5" syntax.</p>
+  <p class=" KR" lang="KR">"DOM5
+HTML", "HTML 5", "XHTML 5" 와 같은 표현들은 같은 대상을 지칭하는 것이 아닙니다. 예를 들어, HTML 5
+는 네임스페이스를 사용하지 않지만 DOM5 HTML, XHTML 5 는 그것을 지원할 것입니다. 이와 유사하게, noscript
+기능은 DOM5 HTML 이나 XHTML 5 문서에서는 사용될 수 없지만 HTML 5 에서는 가능합니다. "--&gt;"
+문자열을 사용하는 주석은 DOM5 HTML 에서 사용할 수 있지만, HTML 5 와 XHTML 5 에서는 사용할 수 없는
+등입니다. </p>
+  <p class=" smallEn" lang="EN">The "DOM5 HTML", "HTML5", and "XHTML5" representations cannot all
+  represent the same content. For example, namespaces cannot be
+  represented using "HTML5", but they are supported in "DOM5 HTML" and
+  "XHTML5". Similarly, documents that use the <code><a href="http://www.w3.org/TR/html5/semantics.html#the-noscript-element">noscript</a></code>
+  feature can be represented using "HTML5", but cannot be represented
+  with "XHTML5" and "DOM5 HTML". Comments that contain the string
+  "<code title="">--&gt;</code>" can be represented in "DOM5 HTML" but
+  not in "HTML5" and "XHTML5". And so forth.</p>
+  
+  <h3 id="structure-of-this-specification"><span class="secno">1.8 </span>Structure of this specification</h3>  
+  <p>이 섹션은 규범이 아닙니다.</p>
+  <p>This specification is divided into the following major
+  sections:</p><dl><dt><a href="http://www.w3.org/TR/html5/infrastructure.html#infrastructure">Common Infrastructure</a>일반 인프라스트럭쳐</dt>
+
+	<dd class=" KR" lang="KR">명세의 규범을 준수하는 클래스, 알고리즘, 정의, 기타 기반사항들</dd>
+	<dd class=" smallEn" lang="EN">The conformance classes, algorithms, definitions, and the
+	common underpinnings of the rest of the specification.</dd>
+
+
+	<dt><a href="http://www.w3.org/TR/html5/dom.html#dom">Semantics, structure, and APIs of HTML documents</a>HTML 문서의 의미론, 구조, 그리고 API</dt>
+
+	<dd class=" KR" lang="KR">문서는 요소들로 구성됩니다. 이러한 요소들은 DOM 을 통해 하나의 나무를 구성합니다. 이 섹션은 이러한 DOM의 기능을 정의하며, 또한 모든 요소들에 공통된 기능을 소개하고, 정의 요소<sub>defining elements</sub>의 컨셉에 대해 이야기할 것입니다.</dd>
+	<dd class=" smallEn" lang="EN">Documents are built from elements. These elements form a tree
+	using the DOM. This section defines the features of this DOM, as
+	well as introducing the features common to all elements, and the
+	concepts used in defining elements.</dd>
+
+
+	<dt><a href="http://www.w3.org/TR/html5/semantics.html#semantics">Elements</a></dt>
+
+	<dd class=" KR" lang="KR">각각의 요소들은 미리 정의된 의미를 가지며, 이러한 의미들이 이 섹션에서 설명됩니다. 저자들이 요소를 어떻게 사용해야 하는지, 사용자 에이전트가 각각의 요소를 어떻게 다루어야 하는지에 대한 설명 역시 제공됩니다.</dd>
+	<dd class=" smallEn" lang="EN">Each element has a predefined meaning, which is explained in
+	this section. Rules for authors on how to use the element<span class="impl">, along with user agent requirements for how to handle
+	each element,</span> are also given.</dd>
+
+
+	<dt><a href="http://www.w3.org/TR/html5/microdata.html#microdata">Microdata</a>마이크로데이터</dt>
+
+	<dd class=" KR" lang="KR">이
+명세서에서는 기계가 이해할 수 있는 주석 개념을 소개합니다. 이러한 주석을 통해 기계는 나무에서 이름/값 쌍을 추출해 낼 수
+있습니다. 이 섹션에서 이러한 알고리즘을 설명하며, HTML을 다른 포맷으로 바꾸는 알고리즘도 소개될 것입니다.</dd>
+	<dd class=" smallEn" lang="EN">This specification introduces a mechanism for adding
+	machine-readable annotations to documents, so that tools can
+	extract trees of name/value pairs from the document. This section
+	describes this mechanism<span class="impl"> and some algorithms
+	that can be used to convert HTML documents into other
+	formats</span>.</dd>
+
+
+	<dt><a href="http://www.w3.org/TR/html5/browsers.html#browsers">Web Browsers</a>웹 브라우저</dt>
+
+	<dd class=" KR" lang="KR">HTML 문서들은 홀로 존재하는 것이 아닙니다. 이 섹션은 다양한 페이지들, 페이지들 사이의 링크들, 그리고 스크립트 실행에 관계되는 다양한 기능들을 정의합니다.</dd>
+	<dd class=" smallEn" lang="EN">HTML documents do not exist in a vacuum — this section
+	defines many of the features that affect environments that deal
+	with multiple pages, links between pages, and running scripts.</dd>
+
+
+	<dt><a href="http://www.w3.org/TR/html5/editing.html#editing">User Interaction</a>사용자 상호작용</dt>
+
+	<dd class=" KR" lang="KR">HTML 문서는 사용자가 상호작용하고 내용을 수정할 수 있는 몇가지 메카니즘을 제공할 수 있는데, 이 섹션에서 그것을 설명합니다.</dd>
+	<dd class=" smallEn" lang="EN">HTML documents can provide a number of mechanisms for users to
+	interact with and modify content, which are described in this
+	section.</dd>
+
+
+	<dt><a href="http://www.w3.org/TR/html5/comms.html#comms">The Communication APIs</a>통신 API</dt>
+
+	<dd class=" KR" lang="KR">이 섹션에서는 HTML 으로 짜여진 어플리케이션이, 같은 클라이언트 머신에서 작동하는, 다른 도메인의 어플리케이션과 통신하는 몇가지 메카니즘을 설명합니다.</dd>
+	<dd class=" smallEn" lang="EN">This section describes some mechanisms that applications
+	written in HTML can use to communicate with other applications from
+	different domains running on the same client.</dd>
+
+
+	<dt><a href="http://www.w3.org/TR/html5/syntax.html#syntax">The HTML Syntax</a></dt>
+	<dt><a href="http://www.w3.org/TR/html5/the-xhtml-syntax.html#xhtml">The XHTML Syntax</a></dt>
+
+	<dd class=" KR" lang="KR">이러한 모든 기능들은, 직렬화된 형태로 표현되고 다른 이들에게 전달될 수 있을 때에만 의미가 있을 것입니다. 따라서, 이 섹션에서는 HTML의 문법을 정의하며, 컨텐츠를 이러한 문법을 이용해 파싱하는 규칙 역시 다룹니다.</dd>
+	<dd class=" smallEn" lang="EN">All of these features would be for naught if they couldn't be
+	represented in a serialized form and sent to other people, and so
+	these sections define the syntaxes of HTML, along with rules for
+	how to parse content using those syntaxes.</dd>
+
+
+  </dl>
+  <p class=" KR" lang="KR">몇가지 부록이 있는데, 그중 일부는 웹 브라우저가 사용할 렌더링 규칙을 정의한 것이 있고, 제거된 기능의 리스트가 있으며, 이 명세서의 초점이 아닌 영역들을 다룹니다.</p>
+  <p class=" smallEn" lang="EN">There are also a couple of appendices, defining <a href="http://www.w3.org/TR/html5/the-xhtml-syntax.html#rendering">rendering rules</a> for Web browsers and listing
+  <a href="http://www.w3.org/TR/html5/obsolete.html#obsolete">obsolete features</a> and <a href="http://www.w3.org/TR/html5/no.html#no">areas
+  that are out of scope</a> for this specification.</p>
+  
+  <h4 id="how-to-read-this-specification"><span class="secno">1.8.1 </span>How to read this specification</h4>
+  <p class=" KR" lang="KR">이
+명세서는 다른 모든 명세서와 마찬가지로 읽어야 합니다. 첫째, 처음부터 끝까지, 여러번 읽으십시오. 그 다음, 적어도 한번은
+거꾸로 읽어야 합니다. 마지막으로, 목차에서 랜덤한 섹션을 고른 뒤, 그것의 모든 상호 참조들을 따라가면서 읽어보십시오.</p>
+  <p class=" smallEn" lang="EN">This specification should be read like all other specifications.
+  First, it should be read cover-to-cover, multiple times. Then, it
+  should be read backwards at least once. Then it should be read by
+  picking random sections from the contents list and following all the
+  cross-references.</p>
+  
+  <h4 id="typographic-conventions"><span class="secno">1.8.2 </span>Typographic conventions</h4><p class="XXX annotation"><b>Status: </b><i>Implemented and widely deployed</i></p>
+  <p>이것은 정의, 요구사항, 또는 설명입니다.</p>
+
+  <p class="note">This is a note.</p><p class="example">This is an example.</p><p class="XXX">This is an open issue.</p><p class="warning">This is a warning.</p><pre class="idl extract">interface <dfn title="">Example</dfn> {
+  // this is an IDL definition
+};</pre><dl class="domintro"><dt><var title="">variable</var> = <var title="">object</var> . <code title="">method</code>( [ <var title="">optionalArgument</var> ] )</dt>
+
+	<dd>
+
+	 <p>This is a note to authors describing the usage of an interface.</p>
+
+	</dd>
+
+  </dl><pre class="css">/* this is a CSS fragment */</pre>
+  
+  
+  <p class=" KR" lang="KR">하나의 단어를 정의하는 부분은 <dfn>이렇게</dfn> 표기할 것입니다. 단어의 사용은 <a href="http://www.w3.org/TR/html5/introduction.html#x-this" title="x-this">이렇게</a>, 또는 <i title="x-this"><a href="http://www.w3.org/TR/html5/introduction.html#x-this">이렇게</a></i> 표기할 것입니다.</p>
+  <p class=" smallEn" lang="EN">The defining instance of a term is marked up like <dfn id="x-this" title="x-this">this</dfn>. Uses of that term are marked up like
+  <a href="http://www.w3.org/TR/html5/introduction.html#x-this" title="x-this">this</a> or like <i title="x-this"><a href="http://www.w3.org/TR/html5/introduction.html#x-this">this</a></i>.</p>  
+  <p class=" KR" lang="KR">요소, 속성, 또는 API를 정의하는 부분은 <code>이렇게</code> 표기할 것입니다. 정의된 요소, 속성, 또는 API에 대한 참조는 <code title="x-that"><a href="http://www.w3.org/TR/html5/introduction.html#x-that">이렇게</a></code> 표기할 것입니다.</p>
+  <p class=" smallEn" lang="EN">The defining instance of an element, attribute, or API is marked
+  up like <dfn id="x-that" title="x-that"><code>this</code></dfn>. References to
+  that element, attribute, or API are marked up like <code title="x-that"><a href="http://www.w3.org/TR/html5/introduction.html#x-that">this</a></code>.</p>  
+  <p class=" KR" lang="KR">기타 코드 조각들은 <code>이렇게</code> 표기합니다.</p>
+  <p class=" smallEn" lang="EN">Other code fragments are marked up <code title="">like this</code>.</p>
+  <p class=" KR" lang="KR">변수들은 <var>이렇게</var> 표기합니다.</p>
+  <p class=" smallEn" lang="EN">Variables are marked up like <var title="">this</var>.</p>
+  <p class=" KR" lang="KR">이것은 이행에 대한 요구사항입니다.</p>
+  <p class="impl smallEn" lang="EN">This is an implementation requirement.</p>
+
+  <h3 id="a-quick-introduction-to-html"><span class="secno">1.9 </span>A quick introduction to HTML</h3><p class="XXX annotation"><b>Status: </b><i>Last call for comments</i></p>
+  <p>이 섹션은 규범이 아닙니다.</p>
+  <p class=" KR" lang="KR">기본적인 HTML 문서는 다음과 같이 보입니다:</p>
+  <p class=" smallEn" lang="EN">A basic HTML document looks like this:</p>
+  <pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;title&gt;Sample page&lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;h1&gt;Sample page&lt;/h1&gt;
+  &lt;p&gt;This is a &lt;a href="demo.html"&gt;simple&lt;/a&gt; sample.&lt;/p&gt;
+  &lt;!-- this is a comment --&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</pre>
+<p class=" KR" lang="KR">HTML 문서는 요소와 텍스트로 구성되는 하나의 나무입니다. 각각의 요소는 시작태그/종료태그로 구분지어집니다.(몇몇 상황에서, 특정 요소들은 생략될 수 있습니다)</p>
+<p class=" smallEn" lang="EN">HTML documents consist of a tree of elements and text. Each
+  element is denoted in the source by a <a href="http://www.w3.org/TR/html5/syntax.html#syntax-start-tag" title="syntax-start-tag">start tag</a>, such as "<code title="">&lt;body&gt;</code>", and an <a href="http://www.w3.org/TR/html5/syntax.html#syntax-end-tag" title="syntax-end-tag">end
+  tag</a>, such as "<code title="">&lt;/body&gt;</code>". (Certain
+  start tags and end tags can in certain cases be <a href="http://www.w3.org/TR/html5/syntax.html#syntax-tag-omission" title="syntax-tag-omission">omitted</a> and are implied by other
+  tags.)</p>
+<p class=" KR" lang="KR">태그들은 삐져나옴 없이 올바른 포함 관계를 가져야 합니다.</p>
+<p class=" smallEn" lang="EN">Tags have to be nested such that elements are all completely
+  within each other, without overlapping:</p>
+<pre class="bad">&lt;p&gt;This is &lt;em&gt;very &lt;strong&gt;wrong&lt;/em&gt;!&lt;/strong&gt;&lt;/p&gt;</pre><pre>&lt;p&gt;This &lt;em&gt;is &lt;strong&gt;correct&lt;/strong&gt;.&lt;/em&gt;&lt;/p&gt;</pre>
+<p class=" KR" lang="KR">이 명세는 HTML에서 사용할 수 있는 요소 집합을 정의하며, 이러한 요소들의 상호 포함관계에 대한 규칙 역시 정의합니다.</p><p>This specification defines a set of elements that can be used in
+  HTML, along with rules about the ways in which the elements can be
+  nested.</p>
+  <p class=" KR" lang="KR">요소들은 속성을 가질 수 있으며, 속성은 요소가 어떻게 동작하는지 제어합니다. 위의 예에서는, a 요소와 그것의 href 속성으로 만들어진 하이퍼링크가 있습니다.</p>
+  <p class=" smallEn" lang="EN">Elements can have attributes, which control how the elements
+  work. In the example above, there is a <a href="http://www.w3.org/TR/html5/history.html#hyperlink">hyperlink</a>,
+  formed using the <code><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-a-element">a</a></code> element and its <code title="attr-hyperlink-href"><a href="http://www.w3.org/TR/html5/history.html#attr-hyperlink-href">href</a></code> attribute:</p>
+  
+  <pre>&lt;a href="demo.html"&gt;simple&lt;/a&gt;</pre>
+  <p class=" KR" lang="KR">속
+성은 시작 태그 내에 위치하며, 이름과 값의 쌍으로 이루어지고, 그것들은 = 문자로 구분됩니다. 속성의 값은, 그것이 아무런
+특수문자도 포함하지 않을 경우에는 따옴표로 감싸지 않아도 됩니다. 그렇지 않다면 홀따옴표 혹은 곂따옴표로 반드시 감싸야 합니다.
+속성의 값과, = 문자는, 속성값이 빈 문자열일 경우 생략할 수 있습니다.</p>
+  <p class=" smallEn" lang="EN"><a href="http://www.w3.org/TR/html5/syntax.html#syntax-attributes" title="syntax-attributes">Attributes</a> are placed
+  inside the start tag, and consist of a <a href="http://www.w3.org/TR/html5/syntax.html#syntax-attribute-name" title="syntax-attribute-name">name</a> and a <a href="http://www.w3.org/TR/html5/syntax.html#syntax-attribute-value" title="syntax-attribute-value">value</a>, separated by an "<code title="">=</code>" character. The attribute value can be <a href="http://www.w3.org/TR/html5/syntax.html#unquoted">left unquoted</a> if it doesn't contain any special
+  characters. Otherwise, it has to be quoted using either single or
+  double quotes. The value, along with the "<code title="">=</code>"
+  character, can be omitted altogether if the value is the empty
+  string.</p><pre>&lt;!-- empty attributes --&gt;
+&lt;input name=address disabled&gt;
+&lt;input name=address disabled=""&gt;
+
+&lt;!-- attributes with a value --&gt;
+&lt;input name=address maxlength=200&gt;
+&lt;input name=address maxlength='200'&gt;
+&lt;input name=address maxlength="200"&gt;</pre>
+<p class=" KR" lang="KR">사용자 에이전트(예를 들어, 웹 브라우저)는 이러한 마크업을 처리해서, DOM (문서 객체 모델) 나무로 바꿉니다. DOM 나무는 메모리 속에 존재하는 문서입니다.</p>
+<p class=" smallEn" lang="EN">HTML user agents (e.g. Web browsers) then <i>parse</i> this
+  markup, turning it into a DOM (Document Object Model) tree. A DOM
+  tree is an in-memory representation of a document.</p>
+  <p class=" KR" lang="KR">DOP 나무는 여러가지 종류의 노드들로 구성됩니다. 자세히 말한다면 DOCTYPE, 요소, 텍스트, 주석 노드들입니다.</p>
+  <p class=" smallEn" lang="EN">DOM trees contain several kinds of nodes, in particular a DOCTYPE
+  node, elements, text nodes, and comment nodes.</p>
+  <p class=" KR" lang="KR">이 섹션의 상단에서 예를 들었던 마크업은 다음과 같은 DOM 나무로 변환됩니다.</p>
+  <p class=" smallEn" lang="EN">The markup snippet at the top of this section would be turned
+  into the following DOM tree:</p>
+  <p class="kip">역주 : 인터넷 익스플로러(8 포함)에서는 아래의 DOM 구조가 정확히 표현되지 않습니다.</p>
+  <ul class="domTree"><li class="t10">DOCTYPE: <code><a href="http://www.w3.org/TR/html5/semantics.html#the-html-element-0">html</a></code></li><li class="t1"><code><a href="http://www.w3.org/TR/html5/semantics.html#the-html-element-0">html</a></code><ul><li class="t1"><code><a href="http://www.w3.org/TR/html5/semantics.html#the-head-element-0">head</a></code><ul><li class="t3"><code>#text</code>: <span title="">⏎␣␣</span></li><li class="t1"><code><a href="http://www.w3.org/TR/html5/semantics.html#the-title-element-0">title</a></code><ul><li class="t3"><code>#text</code>: <span title="">Sample page</span></li></ul></li><li class="t3"><code>#text</code>: <span title="">⏎␣</span></li></ul></li><li class="t3"><code>#text</code>: <span title="">⏎␣</span></li><li class="t1"><code><a href="http://www.w3.org/TR/html5/semantics.html#the-body-element-0">body</a></code><ul><li class="t3"><code>#text</code>: <span title="">⏎␣␣</span></li><li class="t1"><code><a href="http://www.w3.org/TR/html5/semantics.html#the-h1-h2-h3-h4-h5-and-h6-elements">h1</a></code><ul><li class="t3"><code>#text</code>: <span title="">Sample page</span></li></ul></li><li class="t3"><code>#text</code>: <span title="">⏎␣␣</span></li><li class="t1"><code><a href="http://www.w3.org/TR/html5/semantics.html#the-p-element">p</a></code><ul><li class="t3"><code>#text</code>: <span title="">This is a </span></li><li class="t1"><code><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-a-element">a</a></code> <span class="t2" title=""><code class="attribute name">href</code>="<code class="attribute value">demo.html</code>"</span><ul><li class="t3"><code>#text</code>: <span title="">simple</span></li></ul></li><li class="t3"><code>#text</code>: <span title=""> sample.</span></li></ul></li><li class="t3"><code>#text</code>: <span title="">⏎␣␣</span></li><li class="t8"><code>#comment</code>: <span title=""> this is a comment </span></li><li class="t3"><code>#text</code>: <span title="">⏎␣⏎</span></li></ul></li></ul></li></ul>
+  <p class=" KR" lang="KR">이 나무의 루트 요소는 html 요소입니다. html 요소는 HTML 문서에서 항상 루트에 존재합니다. html 요소는 head와 body의 두 요소를 가지며, 그 사이에 텍스트 노드가 있을 수 있습니다.</p>
+  <p class=" smallEn" lang="EN">The <a href="http://www.w3.org/TR/html5/infrastructure.html#root-element">root element</a> of this tree is the
+  <code><a href="http://www.w3.org/TR/html5/semantics.html#the-html-element-0">html</a></code> element, which is the element always found at the
+  root of HTML documents. It contains two elements, <code><a href="http://www.w3.org/TR/html5/semantics.html#the-head-element-0">head</a></code>
+  and <code><a href="http://www.w3.org/TR/html5/semantics.html#the-body-element-0">body</a></code>, as well as a text node between them.</p>
+  <p class=" KR" lang="KR">일반적으로 예상하는 것 보다는 훨씬 많은 텍스트 노드들이 DOM 나무 위에 존재합니다. 왜냐하면, 상당수의 공백문자와 줄바꿈 문자들이 DOM 나무에서 텍스트 노드로 간주되기 때문입니다.</p>
+  <p class=" smallEn" lang="EN">There are many more text nodes in the DOM tree than one would
+  initially expect, because the source contains a number of spaces
+  (presented by "␣") and line breaks ("⏎") that all end
+  up as text nodes in the DOM.</p>
+  <p class=" KR" lang="KR">head 요소는 title 요소를 가집니다. 이 예제에서는 Sample Page 라는 텍스트 노드를 포함합니다. 이와 흡사하게, body 요소는 h1과 p 요소, 그리고 주석을 포함하고 있습니다.</p>
+  <p class=" smallEn" lang="EN">The <code><a href="http://www.w3.org/TR/html5/semantics.html#the-head-element-0">head</a></code> element contains a <code><a href="http://www.w3.org/TR/html5/semantics.html#the-title-element-0">title</a></code>
+  element, which itself contains a text node with the text "Sample
+  page". Similarly, the <code><a href="http://www.w3.org/TR/html5/semantics.html#the-body-element-0">body</a></code> element contains an
+  <code><a href="http://www.w3.org/TR/html5/semantics.html#the-h1-h2-h3-h4-h5-and-h6-elements">h1</a></code> element, a <code><a href="http://www.w3.org/TR/html5/semantics.html#the-p-element">p</a></code> element, and a
+  comment.</p>
+  <hr>
+  <p class=" KR" lang="KR">DOM 나무는 페이지에 포함된 스크립트롤 통해 제어할 수 있습니다. 스크립트(보통 자바스크립트)는 <code>script</code> 요소, 또는 이벤트 핸들러 속성을 통해 문서에 포함시킬 수 있습니다. 예를 들어, 아래의 폼은 <code>output</code> 요소의 값을 Hello World로 바꾸는 스크립트를 포함하고 있습니다.</p>
+  <p class=" smallEn" lang="EN">This DOM tree can be manipulated from scripts in the
+  page. Scripts (typically in JavaScript) are small programs that can
+  be embedded using the <code><a href="http://www.w3.org/TR/html5/semantics.html#script">script</a></code> element or using
+  <a href="http://www.w3.org/TR/html5/browsers.html#event-handler-content-attributes">event handler content attributes</a>. For example, here is
+  a form with a script that sets the value of the form's
+  <code><a href="http://www.w3.org/TR/html5/forms.html#the-output-element">output</a></code> element to say "Hello World":</p><pre>&lt;<a href="http://www.w3.org/TR/html5/forms.html#the-form-element">form</a> <a href="http://www.w3.org/TR/html5/forms.html#attr-form-name" title="attr-form-name">name</a>="main"&gt;
+ Result: &lt;<a href="http://www.w3.org/TR/html5/forms.html#the-output-element">output</a> <a href="http://www.w3.org/TR/html5/forms.html#attr-fe-name" title="attr-fe-name">name</a>="result"&gt;&lt;/output&gt;
+ &lt;<a href="http://www.w3.org/TR/html5/semantics.html#script">script</a>&gt;
+  <a href="http://www.w3.org/TR/html5/dom.html#htmldocument" title="HTMLDocument">document</a>.<a href="http://www.w3.org/TR/html5/dom.html#dom-document-forms" title="dom-document-forms">forms</a>.main.<a href="http://www.w3.org/TR/html5/forms.html#dom-form-elements" title="dom-form-elements">elements</a>.result.<a href="http://www.w3.org/TR/html5/forms.html#dom-output-value" title="dom-output-value">value</a> = 'Hello World';
+ &lt;/script&gt;
+&lt;/form&gt;</pre>
+<p class=" KR" lang="KR">DOM 나무에서 각각의 요소들은 객체의 형태를 가지며, 이러한 객체들은 API를 통해서 제어할 수 있습니다. 예를 들어, 링크는 href 속성을 다양한 방법으로 변경할 수 있습니다.</p>
+<p class=" smallEn" lang="EN">Each element in the DOM tree is represented by an object, and
+  these objects have APIs so that they can be manipulated. For
+  instance, a link (e.g. the <code><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-a-element">a</a></code> element in the tree above)
+  can have its "<code title="attr-hyperlink-href"><a href="http://www.w3.org/TR/html5/history.html#attr-hyperlink-href">href</a></code>"
+  attribute changed in several ways:</p>
+  <pre>var a = <a href="http://www.w3.org/TR/html5/dom.html#htmldocument" title="HTMLDocument">document</a>.<a href="http://www.w3.org/TR/html5/dom.html#dom-document-links" title="dom-document-links">links</a>[0]; // obtain the first link in the document
+a.<a href="http://www.w3.org/TR/html5/text-level-semantics.html#dom-a-href" title="dom-a-href">href</a> = 'sample.html'; // change the destination URL of the link
+a.<a href="http://www.w3.org/TR/html5/infrastructure.html#dom-uda-protocol" title="dom-uda-protocol">protocol</a> = 'https'; // change just the scheme part of the URL
+a.setAttribute('href', 'http://example.com/'); // change the content attribute directly</pre>
+<p class=" KR" lang="KR">DOM 나무는, 구현자(특히, 웹 브라우저와 같은 상호작용이 가능한 구현자)에 의해
+처리되고 표현되었을 때 HTML 문서를 형성하기 위해 사용되는 것이므로, 이 명세서는 거의 대부분 위에서 설명된 마크업 대신
+DOM 나무의 관점에서 서술하게 될 것입니다.</p>
+<p class=" smallEn" lang="EN">Since DOM trees are used as the way to represent HTML documents
+  when they are processed and presented by implementations (especially
+  interactive implementations like Web browsers), this specification
+  is mostly phrased in terms of DOM trees, instead of the markup
+  described above.</p><hr>
+  <p class=" KR" lang="KR">HTML
+문서는 상호작용이 가능한 컨텐츠를 매체에 독립적인 방법으로 표현합니다. HTML 문서는 화면에 그려질수도 있고, 음성 리더기를
+통해 읽혀질수도 있으며, 점자 표시기에 표시될수도 있습니다. 이러한 각각의 렌더링이 정확하게 이루어지게 하기 위해서는 CSS와
+같은 스타일 언어를 사용할 수 있습니다.</p>
+  <p class=" smallEn" lang="EN">HTML documents represent a media-independent description of
+  interactive content. HTML documents might be rendered to a screen,
+  or through a speech synthesizer, or on a braille display. To
+  influence exactly how such rendering takes place, authors can use a
+  styling language such as CSS.</p>
+  <p class=" KR" lang="KR">다음의 예제 페이지는 CSS를 통해 푸른 바탕 위에 노란색으로 표현될 것입니다.</p>
+  <p class=" smallEn" lang="EN">In the following example, the page has been made yellow-on-blue
+  using CSS.</p><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;title&gt;Sample styled page&lt;/title&gt;
+  &lt;style&gt;
+	body { background: navy; color: yellow; }
+  &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;h1&gt;Sample styled page&lt;/h1&gt;
+  &lt;p&gt;This page is just a demo.&lt;/p&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</pre>
+<p class=" KR" lang="KR">HTML 문서를 어떻게 사용할 것인지 좀 더 알고 싶다면 교습서나 가이드를 사용할
+것을 권합니다. 이 명세서에 포함된 예제들이 유용할 수도 있지만, 초급 저자들은 이 명세서가 처음부터 이해하기에는 어려운
+레벨에서 언어를 정의하고 있음을 유념해야 합니다.</p>
+<p class=" smallEn" lang="EN">For more details on how to use HTML, authors are encouraged to
+  consult tutorials and guides. Some of the examples included in this
+  specification might also be of use, but the novice author is
+  cautioned that this specification, by necessity, defines the
+  language with a level of detail that may be difficult to understand
+  at first.</p>
+	<script type="text/javascript" src="introduction_files/translationCore.js"> </script>
+</body></html>
